@@ -268,9 +268,11 @@ const Summary = ({equityData, setType, customScrollbarStyles}) => {
 
           <Flex mt="27px" gap="8px" align="center" mx={'auto'} w="full">
             <CustomizableButton
+              h="48px"
+              fontSize="16px"
+              fontWeight="500"
               border="1px solid #DD4449 !important"
               bg="transparent"
-              h="49px"
               w="50%"
               color="#DD4449"
               onClick={() => setType('dispute')}
@@ -278,11 +280,13 @@ const Summary = ({equityData, setType, customScrollbarStyles}) => {
               Dispute
             </CustomizableButton>
             <Button
+              h="48px"
+              fontSize="16px"
+              fontWeight="500"
               onClick={() => setType('validate')}
               bg="primary"
               borderColor="primary"
               color="white"
-              h="49px"
               w="50%"
             >
               Validate

@@ -1,5 +1,5 @@
 import {DrawerBody, Flex, Text, Center, Image} from '@chakra-ui/react';
-import {Button, CustomizableButton} from './../../../../ui-lib';
+import {Button, CustomizableButton} from '../../../../ui-lib';
 import processingLoader from './../../../../images/processing-transaction.gif';
 import successfulLoader from './../../../../images/successful-transaction.gif';
 
@@ -16,10 +16,17 @@ const ConfirmWallet = ({loading, success, proceed, setPaymentStep}) => {
           textAlign={'center'}
         >
           <Image alt="loader" w="150px" h="150px" src={successfulLoader.src} />
-          <Text color="text" fontWeight={500} fontSize={'28px'} my="25px">
+          <Text
+            textAlign={'center'}
+            color="text"
+            fontWeight={500}
+            fontSize={'28px'}
+            my="25px"
+            className="gilda-display-regular"
+          >
             Transaction Successful
           </Text>
-          <Text color="text" fontSize={'16px'} fontWeight="400">
+          <Text textAlign={'center'} color="text" fontSize={'16px'} fontWeight="400">
             Your payment has been successfully processed
           </Text>
         </Center>
@@ -34,6 +41,7 @@ const ConfirmWallet = ({loading, success, proceed, setPaymentStep}) => {
         >
           <Image alt="loader" w="150px" h="150px" src={processingLoader.src} />
           <Text
+            textAlign={'center'}
             color="text"
             fontWeight={500}
             fontSize={'28px'}
@@ -42,13 +50,14 @@ const ConfirmWallet = ({loading, success, proceed, setPaymentStep}) => {
           >
             Processing payment
           </Text>
-          <Text color="text" fontSize={'16px'} fontWeight="400">
+          <Text textAlign={'center'} color="text" fontSize={'16px'} fontWeight="400">
             Wait a moment
           </Text>
         </Center>
       ) : (
         <Flex w="full" h="400px" direction="column" justify={'center'} align={'center'} gap="20px">
           <Text
+            textAlign={'center'}
             color="text"
             fontWeight={500}
             fontSize="28px"
@@ -58,13 +67,13 @@ const ConfirmWallet = ({loading, success, proceed, setPaymentStep}) => {
             Continue with your wallet
           </Text>
           <Text
-            color="text"
             textAlign={'center'}
+            color="text"
             fontWeight={400}
             fontSize="16px"
             lineHeight={'25px'}
           >
-            In order to finish the payment process, you will be charged through your wallet.
+            In order to finish the payment process, you will be charged through Wallet.
           </Text>
           <Flex mt="27px" gap="26px" justify="space-between" align="center">
             <CustomizableButton

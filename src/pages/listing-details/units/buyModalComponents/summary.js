@@ -290,7 +290,7 @@ const Summary = ({
             bg="card_bg"
             maxW="430px"
             px={{base: '15px', md: '32px'}}
-            minH="518px"
+            h="fit-content"
             py={{base: '28px', md: '38px'}}
             // borderTopRadius={{base: '10px', md: '16px'}}
           >

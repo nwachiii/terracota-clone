@@ -2,8 +2,18 @@ import {DrawerBody, Flex, Text, Center, Image} from '@chakra-ui/react';
 import {Button, CustomizableButton} from '../../../../ui-lib';
 import processingLoader from '../../../../images/processing-transaction.gif';
 import successfulLoader from '../../../../images/successful-transaction.gif';
+import ExistingCard from '../../../payment/ExistingCard';
+import {formatToCurrency} from '../../../../utils';
 
-const ConfirmCard = ({loading, success, proceed, setPaymentStep}) => {
+const ConfirmCard = ({
+  selectedCard,
+  setSelectedCard,
+  loading,
+  success,
+  proceed,
+  amountToPay,
+  setPaymentStep,
+}) => {
   return (
     <DrawerBody>
       {success ? (
@@ -53,38 +63,66 @@ const ConfirmCard = ({loading, success, proceed, setPaymentStep}) => {
           </Text>
         </Center>
       ) : (
-        <Flex w="full" h="400px" direction="column" justify={'center'} align={'center'} gap="20px">
-          <Text
-            color="text"
-            fontWeight={500}
-            fontSize="28px"
-            lineHeight={'36px'}
-            className="gilda-display-regular"
+        <Flex
+          w="full"
+          h="fit-content"
+          direction="column"
+          justify={'center'}
+          align={'center'}
+          gap="20px"
+        >
+          <Flex
+            my="12px"
+            h="130px"
+            w="full"
+            color="white"
+            border="1px solid"
+            borderColor={'shade'}
+            bg="card_bg"
+            align={'center'}
+            justify={'center'}
+            direction="column"
           >
-            Continue with card
-          </Text>
-          <Text
-            color="text"
-            textAlign={'center'}
-            fontWeight={400}
-            fontSize="16px"
-            lineHeight={'25px'}
-          >
-            In order to finish the payment process, you will be charged through your debit/credit
-            card.
-          </Text>
-          <Flex mt="27px" gap="26px" justify="space-between" align="center">
+            <Text color="text" fontSize={{base: '14px', md: '16px'}} fontWeight={400}>
+              You will Pay
+            </Text>
+            <Text
+              color="text"
+              fontSize={{base: '28px', md: '33px'}}
+              fontWeight={500}
+              className="gilda-display-regular"
+            >
+              {formatToCurrency(amountToPay)}
+            </Text>
+          </Flex>
+
+          <ExistingCard
+            proceed={proceed}
+            amountToPay={amountToPay}
+            selectedCard={selectedCard}
+            setSelectedCard={setSelectedCard}
+          />
+
+          <Flex mt="27px" gap="26px" justify="space-between" align="center" w="full">
             <CustomizableButton
-              border="1px solid black !important"
+              border="1px solid black"
               color="black"
-              bg="transparent"
+              bg="white"
               h="49px"
-              w="150px"
+              w={{base: '50%', md: '250px'}}
               onClick={() => setPaymentStep('index')}
             >
               Cancel
             </CustomizableButton>
-            <Button onClick={proceed} color="white" w="150px" bg="primary" h="49px">
+            <Button
+              disabled={!selectedCard}
+              isDisabled={!selectedCard}
+              onClick={proceed}
+              color="white"
+              w={{base: '50%', md: '250px'}}
+              bg="primary"
+              h="49px"
+            >
               Proceed
             </Button>
           </Flex>

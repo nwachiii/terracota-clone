@@ -163,6 +163,9 @@ const SummaryDrawer = ({asset, setType, customScrollbarStyles}) => {
 
         {asset?.payment_plan?.plan_type === 'custom' && (
           <Button
+            h="48px"
+            fontSize="16px"
+            fontWeight="500"
             w="full"
             mt="16px"
             bg="transparent"
@@ -175,7 +178,16 @@ const SummaryDrawer = ({asset, setType, customScrollbarStyles}) => {
           </Button>
         )}
 
-        <Button w="full" mt="16px" bg="primary" color="white" onClick={handleProceed}>
+        <Button
+          h="48px"
+          fontSize="16px"
+          fontWeight="500"
+          w="full"
+          mt="16px"
+          bg="primary"
+          color="white"
+          onClick={handleProceed}
+        >
           Proceed to Payment
         </Button>
       </Box>

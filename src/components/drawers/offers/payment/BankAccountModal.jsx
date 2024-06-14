@@ -30,7 +30,6 @@ export const BankAccountModal = ({ handleEndTransaction, loading, amount, trasfe
         </Center>
       ) : (
         <Box px='24px' pb='38px' h={'fit-content'} overflowY={'scroll'}>
-
           <Flex
             my='12px' h='130px' w='full'
             color='white' border='1px solid'
@@ -58,7 +57,7 @@ export const BankAccountModal = ({ handleEndTransaction, loading, amount, trasfe
                   <Text fontSize='14px' fontWeight={600}>
                     {trasferDetails?.data?.bank_name}
                   </Text>
-                  <Text fontSize='25px' fontWeight={600}>
+                  <Text fontSize='25px' fontWeight={400} className='gilda-display-regular'>
                     {trasferDetails?.data?.account_number}
                   </Text>
                 </Box>

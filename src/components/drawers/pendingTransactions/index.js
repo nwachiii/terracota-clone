@@ -91,7 +91,7 @@ const PendingTransactions = ({assetData, drawer, isError, isLoading}) => {
         bg="#FBFCFC"
         px="0"
       >
-        <Box px="24px" pt={'8px'}>
+        <Box px="24px" pt={'8px'} mb="38px">
           <Flex w="full" h="20px" justify={'space-between'} align={'center'}>
             {type === 'list' ? (
               <Text
@@ -184,7 +184,7 @@ const PendingTransactions = ({assetData, drawer, isError, isLoading}) => {
             />
           </Flex>
         </Box>
-        <Box w="full" borderBottom="1px solid" borderColor={'shade'} mb="21px" mt={'14px'} />
+        {/* <Box w="full" borderBottom="1px solid" borderColor={'shade'} mb="21px" mt={'14px'} /> */}
 
         {type === 'list' ? (
           <TransactionsList

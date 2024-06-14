@@ -22,6 +22,7 @@ export const showConfettiFireworks = (time) => {
     }
 
     const particleCount = 50 * (timeLeft / duration)
+    // since particles fall down, start a bit higher than random
     confetti(
       Object.assign({}, defaults, {
         particleCount,
