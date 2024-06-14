@@ -46,7 +46,7 @@ const AssetOverviewWrapper = ({overviewInfo, children, ...rest}) => {
 
       {overviewInfo.map((info, idx) => {
         return (
-          <HStack key={idx} justify="space-between" w="full">
+          <HStack key={idx} justify="space-between" w="full" my={4}>
             <Text
               fontSize={{base: '12px', md: '13.664px'}}
               lineHeight={{base: '14px', md: '17px'}}
