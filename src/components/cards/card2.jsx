@@ -21,7 +21,7 @@ export const CardTwo = ({
       style={{aspectRatio: '38 / 36'}}
       bg="card_bg"
       mx={'auto'}
-      aspectRatio={{base: `1 / 1`, md: `38 / 36'`}}
+      // aspectRatio={{base: `1 / 1`, md: `38 / 36'`}} DO NOT TRY THIS AT HOME
       h={{base: 'auto', md: '540px'}}
       w="full"
       {...rest}

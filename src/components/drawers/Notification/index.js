@@ -8,9 +8,8 @@ import {LoggedinUser} from '../../../constants/routes';
 import CoOwnSummary from './coOwnSummary';
 import InviteesReaction from './inviteesReaction';
 import CoOwnersList from './coOwnersList';
-// import InviteRejection from './InviteesRejection';
-import Breakdown from './breakdown';
 import InviteRejection from './inviteesRejection';
+import Breakdown from './breakdown';
 
 const customScrollbarStyles = {
   '&::-webkit-scrollbar': {
