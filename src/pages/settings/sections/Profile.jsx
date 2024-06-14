@@ -246,7 +246,8 @@ const Profile = () => {
                     onChange={formik.handleChange("full_name")}
                     value={formik.values.full_name}
                     placeholder="Enter full name"
-                    fontSize={13}
+                      fontSize={13}
+                      disabled
                   />
                   <FormInput
                     label="Date of Birth"

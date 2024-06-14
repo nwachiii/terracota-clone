@@ -136,12 +136,12 @@ const Profile = () => {
   };
 
   return (
-    <Stack padding={{base: '0', lg: '34px'}} w="full">
-      {next_of_kinQuery?.isLoading ? (
-        <Spinner noAbsolute />
-      ) : (
-        <Box>
-          {/* <UploadProfilePicture
+		<Stack padding={{base: '0', lg: '34px'}} w='full'>
+			{next_of_kinQuery?.isLoading ? (
+				<Spinner noAbsolute />
+			) : (
+				<Box>
+					{/* <UploadProfilePicture
             containerStyle={{
               width: "max-content",
               margin: "auto",
@@ -155,93 +155,33 @@ const Profile = () => {
             isProfilePic
           /> */}
 
-          {/* first section */}
-          <SimpleGrid
-            mt={{base: '10px', lg: '40px'}}
-            columns={{base: 1, lg: 3}}
-            spacing="19px"
-            justifyContent={'space-between'}
-          >
-            <GridItem colSpan={{base: 1, lg: 1}} mb={{base: '7px', lg: '30px'}} maxW="413px">
-              <Text
-                fontSize={{ base: 16, md: 23 }}
-                fontWeight={600}
-                textTransform={'uppercase'}
-              >
-                Next of Kin
-              </Text>
-            </GridItem>
-            <GridItem
-              colSpan={{base: 1, lg: 2}}
-              mb={{base: '7px', lg: '30px'}}
-              p="24px"
-              border="1px solid #EAECF0"
-              borderRadius={'2px'}
-              boxShadow={
-                '0px 1px 3px 0px rgba(16, 24, 40, 0.10), 0px 1px 2px 0px rgba(16, 24, 40, 0.06)'
-              }
-            >
-              <SimpleGrid columns={{base: 1, lg: 2}} spacing="19px">
-                <FormInput
-                  type="text"
-                  label="Full Name"
-                  onChange={formik.handleChange('first_name')}
-                  value={`${formik.values.first_name}${formik.values.middle_name}${formik.values.last_name}`}
-                  placeholder="Enter full name"
-                />
-                <FormInput
-                  label="Email address"
-                  type="email"
-                  onChange={formik.handleChange('email')}
-                  value={formik.values.email}
-                  placeholder={'Enter email address'}
-                />
-                <FormInput
-                  label="Phone number"
-                  type='phone'
-                  onChange={formik.handleChange('phone')}
-                  value={formik.values.phone}
-                  placeholder={'Enter phone number'}
-                />
-                <FormSelect
-                  options={['Father', 'Mother', 'Brother', 'Sister', 'Partner']}
-                  label="Relationship"
-                  type="text"
-                  onChange={formik.handleChange('relationship')}
-                  value={formik.values.relationship}
-                  placeholder="Select relationship"
-                />
-                <GridItem colSpan={{base: 1, lg: 2}}>
-                  <FormInput
-                    label="Residential Address"
-                    type="email"
-                    onChange={formik.handleChange('residential_address')}
-                    value={formik.values.residential_address}
-                    placeholder="Enter residential address"
-                  />
-                </GridItem>
-              </SimpleGrid>
-            </GridItem>
-          </SimpleGrid>
-        </Box>
-      )}
+					{/* first section */}
+					<SimpleGrid mt={{base: '10px', lg: '40px'}} columns={{base: 1, lg: 3}} spacing='19px' justifyContent={'space-between'}>
+						<GridItem colSpan={{base: 1, lg: 1}} mb={{base: '7px', lg: '30px'}} maxW='413px'>
+							<Text fontSize={{base: 16, md: 23}} fontWeight={600} textTransform={'uppercase'}>
+								Next of Kin
+							</Text>
+						</GridItem>
+						<GridItem colSpan={{base: 1, lg: 2}} mb={{base: '7px', lg: '30px'}} p='24px' border='1px solid #EAECF0' borderRadius={'2px'} boxShadow={'0px 1px 3px 0px rgba(16, 24, 40, 0.10), 0px 1px 2px 0px rgba(16, 24, 40, 0.06)'}>
+							<SimpleGrid columns={{base: 1, lg: 2}} spacing='19px'>
+								<FormInput type='text' label='Full Name' onChange={formik.handleChange('first_name')} value={`${formik.values.first_name}${formik.values.middle_name}${formik.values.last_name}`} placeholder='Enter full name' disabled />
+								<FormInput label='Email address' type='email' onChange={formik.handleChange('email')} value={formik.values.email} placeholder={'Enter email address'} />
+								<FormInput label='Phone number' type='phone' onChange={formik.handleChange('phone')} value={formik.values.phone} placeholder={'Enter phone number'} />
+								<FormSelect options={['Father', 'Mother', 'Brother', 'Sister', 'Partner']} label='Relationship' type='text' onChange={formik.handleChange('relationship')} value={formik.values.relationship} placeholder='Select relationship' />
+								<GridItem colSpan={{base: 1, lg: 2}}>
+									<FormInput label='Residential Address' type='email' onChange={formik.handleChange('residential_address')} value={formik.values.residential_address} placeholder='Enter residential address' />
+								</GridItem>
+							</SimpleGrid>
+						</GridItem>
+					</SimpleGrid>
+				</Box>
+			)}
 
-      <Button
-        onClick={handleUpdate}
-        isLoading={next_of_kinQuery?.isLoading || mutation.isLoading}
-        mt="20px"
-        color="white"
-        bg="#DDB057"
-        w={{ base: 'full', lg: "200px" }}
-        type="submit"
-        h='48px'
-        fontSize={16}
-        alignSelf='end'
-      >
-        Update
-      </Button>
-    </Stack>
-  );
+			<Button onClick={handleUpdate} isLoading={next_of_kinQuery?.isLoading || mutation.isLoading} mt='20px' color='white' bg='#DDB057' w={{base: 'full', lg: '200px'}} type='submit' h='48px' fontSize={16} alignSelf='end'>
+				Update
+			</Button>
+		</Stack>
+	);
 };
 
 export default Profile;
