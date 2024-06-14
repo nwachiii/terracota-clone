@@ -37,7 +37,9 @@ const OtherUnits = ({info, excludingId}) => {
               p={`16px 12px`}
               gap={`12px`}
               border={`1px solid`}
-              borderColor={`matador_text.500`}
+              // borderColor={`matador_text.500`}
+              bg={`card_bg`}
+              borderColor={`matador_border_color.100`}
               onClick={() =>
                 router.push({
                   pathname: `/listing-details/units/${id}`,

@@ -140,8 +140,8 @@ const MyAssets = ({isAssetOpen, onAssetClose, onDrawerOpen}) => {
               <>
                 <Stack
                   direction={{base: 'column', md: 'row'}}
-                  overflowX={'scroll'}
-                  overflowY={{base: 'scroll', md: 'hidden'}}
+                  overflowX={'auto'}
+                  overflowY={{base: 'auto', md: 'hidden'}}
                   scrollBehavior={'smooth'}
                   className="hide_scroll"
                   ref={readScollToRef1}

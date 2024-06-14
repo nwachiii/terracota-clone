@@ -55,7 +55,7 @@ const LayoutView = ({
           bottom={0}
           bg="background"
           color={`matador_text.400`}
-          zIndex={1600}
+          zIndex={1}
         >
           <Text fontWeight="400" opacity={`.8`}>
             Powered by myxellia.io

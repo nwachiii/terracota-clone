@@ -205,7 +205,27 @@ const Navbar = ({transluscent, isLandingPage, navBarStyle, activePage}) => {
             router.pathname === '/properties' ||
             router.pathname === '/settings' ? (
               <Link href={LoggedinUser ? '/properties' : '/'}>
-                <Image
+                {store_data?.company_image ? (
+                  <Center
+                    w="48px"
+                    h="48px"
+                    minWidth={`48px`}
+                    maxWidth={`48px`}
+                    position={`relative`}
+                  >
+                    <Image
+                      src={store_data?.company_image}
+                      alt={'Company Image'}
+                      w="100%"
+                      height="100%"
+                      minWidth={`100%`}
+                      minHeight={`100%`}
+                    />
+                  </Center>
+                ) : (
+                  <RiBuilding4Fill fontSize={`48px`} />
+                )}
+                {/* <Image
                   cursor={'pointer'}
                   src={useLightItems ? logoWhite.src : logo.src}
                   maxH={'45px'}
@@ -213,7 +233,15 @@ const Navbar = ({transluscent, isLandingPage, navBarStyle, activePage}) => {
                   w="full"
                   maxW={'154px'}
                   alt={'app-logo'}
-                />
+                /> */}
+                {/* <Text
+                fontSize={`20px`}
+                textTransform={`uppercase`}
+                className="gilda-display-regular"
+                fontWeight={500}
+              >
+                {store_data?.business_name || `Your Logo`}
+              </Text> */}
                 {/* <VStack gap={'0rem'}>
                   <RiBuilding4Fill fontSize={`24px`} />
                   <Text

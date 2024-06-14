@@ -97,7 +97,7 @@ const WalletContent = ({setPage, onWalClose, avatar}) => {
               fontSize={'14px'}
               fontWeight={500}
               color="text"
-              letterSpacing='0.52px'
+              letterSpacing="0.52px"
             >
               Current Balance
             </Text>
@@ -240,7 +240,7 @@ const WalletContent = ({setPage, onWalClose, avatar}) => {
                               fontWeight={400}
                               opacity={0.6}
                             >
-                              ₦ {item?.balance_before_transaction || '0'}
+                              {formatToCurrency(item?.balance_before_transaction) || '0'}
                             </Text>
                           </VStack>
                         </Flex>

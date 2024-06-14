@@ -1,9 +1,12 @@
 import React from 'react';
-import {Flex, Icon, Image, Text} from '@chakra-ui/react';
+import {Center, Flex, Icon, Image, Text} from '@chakra-ui/react';
 import {VStack, Drawer, DrawerOverlay, DrawerContent, DrawerBody, Divider} from '@chakra-ui/react';
 import logoMobile from '../../images/mobile-logo-white.png';
 import {Button} from '../../ui-lib';
 import {RxCross1} from 'react-icons/rx';
+import {IoMdSettings} from 'react-icons/io';
+import {FaFileLines} from 'react-icons/fa6';
+import {PiMagnifyingGlassFill} from 'react-icons/pi';
 import {useRouter} from 'next/router';
 import ProfileIcon from '../../images/icons/user-profile.svg';
 
@@ -26,6 +29,7 @@ import notificationIconLight from '../../images/navbar/notification.svg';
 import {appCurrentTheme} from '../../utils/localStorage';
 import {LIGHT} from '../../constants/names';
 import {LoggedinUser} from '../../constants/routes';
+import {BiMessageAltAdd, BiSolidMessageDetail} from 'react-icons/bi';
 
 const DrawerComp = ({
   feedBackModal,
@@ -85,6 +89,7 @@ const DrawerComp = ({
     {
       key: 'settings',
       title: 'Settings',
+      icon: <IoMdSettings />,
       image: settingIcon,
       onClick: () => {
         onDrawerClose();
@@ -94,6 +99,7 @@ const DrawerComp = ({
     {
       key: 'feedback',
       title: 'Feedback',
+      icon: <BiSolidMessageDetail />,
       image: feedbackIcon,
       onClick: () => {
         onDrawerClose();
@@ -103,6 +109,7 @@ const DrawerComp = ({
     {
       key: 'terms',
       title: 'Terms & conditions',
+      icon: <FaFileLines />,
       image: termsIcon,
       onClick: () =>
         window.open(`${TERMS?.data ? TERMS.data?.data?.message?.document : ''}`, '_blank'),
@@ -110,6 +117,7 @@ const DrawerComp = ({
     {
       key: 'suggest',
       title: 'Suggest an idea',
+      icon: <BiMessageAltAdd />,
       image: suggestIcon,
       onClick: () => {
         onDrawerClose();
@@ -119,6 +127,7 @@ const DrawerComp = ({
     {
       key: 'report',
       title: 'Report a bug',
+      icon: <PiMagnifyingGlassFill />,
       image: reportBugIcon,
       onClick: () => {
         onDrawerClose();
@@ -187,7 +196,9 @@ const DrawerComp = ({
             <VStack align={'flex-start'} spacing={'43px'}>
               {dropdown_data.map(data => (
                 <Flex align={'center'} gap="12px" key={data.key}>
-                  <Image src={data.image?.src} />
+                  <Center color={`primary`} fontSize={`16px`}>
+                    {data.icon || <Image src={data.image?.src} />}
+                  </Center>
                   <Text
                     onClick={data.onClick}
                     key={data.key}
