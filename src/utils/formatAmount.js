@@ -1,7 +1,4 @@
 export const formatAmount = (str) => {
-  // convert input string to number
-  // handle result as a money value in US format
-  // since the above returns a string with commas, remove commas from returning string values
   const numToUse =
     str && typeof str == "string"
       ? Number(str?.replace(/\,/g, "")).toLocaleString("en-US")
