@@ -1,0 +1,150 @@
+export const color = {
+  primary: '#DDB057',
+  secondary: '#DAB91F',
+  primaryShade: '#DAB91F88',
+  primaryDark: '#8E6E69',
+  lightGrey: '#E4E4E4',
+  primaryFilterOpacity: 'rgba(218, 185, 31, 0.19)',
+  matador__green: '#12D8A0',
+  matador__red: '#FF3636',
+  matador__yellow: '#FF9103',
+  matador__white: '#FFFFFF',
+  matador__grey: '#F1F1F1',
+  matador__greySec: '#9E9E9E',
+  matador_greyThird: '#E0E0E0',
+  matador__greyFour: '#919191',
+  black: {
+    500: '#000000',
+  },
+};
+
+export const colors_object = {
+  light: {
+    ...color,
+    theme_name: 'light',
+    fill: 'rgba(25, 25, 25, 0.20)',
+    card_bg: '#FFF',
+    background: '#FAFAFA',
+    text: '#191919',
+    inverse_text: '#DDDDDD',
+    shade: '#E4E4E4',
+
+    matador_background: {
+      100: `#F0F0F0`,
+      200: `#FFF`,
+      300: `#E4E4E4`,
+    },
+    matador_text: {100: '#000000', 200: '#191919', 300: `#606060`, 400: `#747474`, 500: `#4B4B4B`},
+    matador_button_bg: {100: '#000000', 200: '#191919'},
+    matador_button_text: {100: '#ffffff', 200: '#f5f5f5'},
+    matador_border_color: {100: `#d0d5dd`},
+    matador_form: {
+      label: `#606060`,
+      color: `#919191`,
+    },
+    matador_input: {
+      color: '#9c9c9c',
+    },
+  },
+  darkGrey: {
+    ...color,
+    theme_name: 'darkGrey',
+    fill: 'rgba(255, 255, 255, 0.20)',
+    card_bg: '#2C2C2C',
+    background: '#232425',
+    text: '#DDDDDD',
+    inverse_text: '#2F2F2F',
+    shade: '#D0D5DD',
+
+    matador_background: {
+      100: `#232425`,
+      200: `#2C2C2C`,
+      300: `#3A3A3A`,
+    },
+    matador_text: {100: '#FFFFFF', 200: '#F4F4F4', 300: '#F0F0F0', 400: '#F0F0F0', 500: `#eeeeee`},
+    matador_button_bg: {100: '#FFFFFF', 200: '#F4F4F4'},
+    matador_button_text: {100: '#000000', 200: '#191919'},
+    matador_border_color: {100: `#2C2C2C`},
+    matador_divider_color: {100: '#656565'},
+    matador_form: {
+      label: `#FAFAFAE5`,
+      color: `#ffffff`,
+    },
+  },
+  darkGreen: {
+    ...color,
+    theme_name: 'darkGreen',
+    fill: 'rgba(255, 255, 255, 0.20)',
+    card_bg: '#202C33',
+    background: '#111B21',
+    text: '#DDDDDD',
+    inverse_text: '#2F2F2F',
+    shade: '#D0D5DD',
+
+    matador_background: {
+      100: `#111B21`,
+      200: `#202C33`,
+      300: `#011a12`,
+    },
+    matador_text: {100: '#FFFFFF', 200: '#F4F4F4', 300: '#F0F0F0', 400: '#F0F0F0', 500: `#eeeeee`},
+    matador_button_bg: {100: '#FFFFFF', 200: '#F4F4F4'},
+    matador_button_text: {100: '#000000', 200: '#191919'},
+    matador_border_color: {100: `#011a12`},
+    matador_divider_color: {100: '#656565'},
+    matador_form: {
+      label: `#FAFAFAE5`,
+      color: `#ffffff`,
+    },
+    matador_input: {
+      color: '#fff',
+    },
+  },
+  darkBlue: {
+    ...color,
+    theme_name: 'darkBlue',
+    fill: 'rgba(255, 255, 255, 0.20)',
+    card_bg: '#1C1C2A',
+    background: '#15151E',
+    text: '#DDDDDD',
+    inverse_text: '#2F2F2F',
+    shade: '#D0D5DD',
+
+    matador_background: {
+      100: `#15151E`,
+      200: `#1C1C2A`,
+      300: `#010138`,
+    },
+    matador_text: {100: '#FFFFFF', 200: '#F4F4F4', 300: '#F0F0F0', 400: '#F0F0F0', 500: `#eeeeee`},
+    matador_button_bg: {100: '#FFFFFF', 200: '#F4F4F4'},
+    matador_button_text: {100: '#000000', 200: '#191919'},
+    matador_border_color: {100: `#010138`},
+    matador_divider_color: {100: '#656565'},
+    matador_form: {
+      label: `#FAFAFAE5`,
+      color: `#ffffff`,
+    },
+    matador_input: {
+      color: '#fff',
+    },
+  },
+  default: {
+    ...color,
+    theme_name: 'light',
+    matador_background: {
+      100: `#FFFFFF`,
+      200: `#F0F0F0`,
+      300: `#E4E4E4`,
+    },
+    matador_text: {100: '#FFFFFF', 200: '#F4F4F4', 300: '#F0F0F0', 400: `#747474`, 500: `#4B4B4B`},
+    matador_button_bg: {100: '#000000', 200: '#191919'},
+    matador_button_text: {100: '#ffffff', 200: '#f5f5f5'},
+    matador_border_color: {100: `#d0d5dd`},
+    matador_form: {
+      label: `#606060`,
+      color: `#919191`,
+    },
+    matador_input: {
+      color: '#fff',
+    },
+  },
+};
