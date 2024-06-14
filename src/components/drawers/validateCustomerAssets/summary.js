@@ -214,6 +214,7 @@ const Summary = ({equityData, setType, customScrollbarStyles}) => {
           )}
 
           <VStack
+            pb="80px"
             align={'stretch'}
             mt="20px"
             spacing={'24px'}
@@ -266,7 +267,18 @@ const Summary = ({equityData, setType, customScrollbarStyles}) => {
             </Flex>
           </VStack>
 
-          <Flex mt="27px" gap="8px" align="center" mx={'auto'} w="full">
+          <Flex
+            position={'fixed'}
+            bottom={0}
+            right={0}
+            py="27px"
+            gap="8px"
+            align="center"
+            mx={'auto'}
+            w="full"
+            bg="white"
+            px={{base: '18px', md: '24px'}}
+          >
             <CustomizableButton
               h="48px"
               fontSize="16px"

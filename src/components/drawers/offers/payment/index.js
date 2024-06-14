@@ -119,15 +119,10 @@ const PaymentDrawer = ({asset, drawer, setType, customScrollbarStyles, setStep, 
                 justify={'center'}
                 direction="column"
               >
-                <Text color="text" fontSize={{base: '14px', md: '18px'}} fontWeight={400}>
+                <Text color="text" fontWeight={400} fontSize={{base: '16px', md: '16px'}}>
                   You will Pay
                 </Text>
-                <Text
-                  color="text"
-                  fontSize={{base: '28px', md: '34px'}}
-                  fontWeight={500}
-                  className="gilda-display-regular"
-                >
+                <Text color="#4B4B4B" fontWeight={600} fontSize={{base: '28px', md: '34px'}}>
                   {formatToCurrency(formattedAmount)}
                 </Text>
               </Flex>

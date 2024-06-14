@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Modal,
   ModalOverlay,
@@ -17,52 +17,54 @@ import {
   Drawer,
   DrawerOverlay,
   DrawerContent,
-  DrawerCloseButton
+  DrawerCloseButton,
+  useMediaQuery,
 } from '@chakra-ui/react';
-import { FaTimes } from 'react-icons/fa';
-import { Button, Checkbox } from '../../../ui-lib';
+import {FaTimes} from 'react-icons/fa';
+import {Button, Checkbox} from '../../../ui-lib';
 import {
   CustomSingleDatePicker,
-  SelectTime
+  SelectTime,
 } from '../../../components/common/Calendar/forDateAndTime';
-import { useMutation } from 'react-query';
-import { requestATour } from '../../../api/listing';
-import { storeName } from '../../../constants/routes';
+import {useMutation} from 'react-query';
+import {requestATour} from '../../../api/listing';
+import {storeName} from '../../../constants/routes';
 import processingLoader from '../../../images/processing-transaction.gif';
 import successfulLoader from '../../../images/successful-transaction.gif';
-import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
+import {CheckIcon, CloseIcon} from '@chakra-ui/icons';
+import SelectDateCarousel from './selectDateCarousel';
 
-export const RequestTourContent = ({ info }) => {
+export const RequestTourContent = ({requestModal, info}) => {
   const toast = useToast();
   const [time, setTime] = useState('');
   const [tourMode, setTourMode] = useState(null);
   const [mainDate, setmainDate] = useState('');
+  const [isLargeScreen] = useMediaQuery('(min-width: 769px)');
 
-  const proceedRequest = useMutation((body) => requestATour(body, info.id), {
-    onSuccess: async (res) => {
+  const proceedRequest = useMutation(body => requestATour(body, info.id), {
+    onSuccess: async res => {
       toast({
-        description: `Inspection Schedule Successful`,
+        description: `Inspection Scheduled Successfully`,
         status: 'success',
         duration: 5000,
         isClosable: true,
-        position: 'top-right'
+        position: 'top-right',
       });
+      requestModal.onClose();
     },
-    onError: (err) => {
+    onError: err => {
       toast({
         title: 'An error occured',
-        description: `${
-          err?.response?.data?.message || 'Something went wrong, try again'
-        }`,
+        description: `${err?.response?.data?.message || 'Something went wrong, try again'}`,
         status: 'error',
         duration: 5000,
         isClosable: true,
-        position: 'top-right'
+        position: 'top-right',
       });
-    }
+    },
   });
 
-  const handleSelectedDate = (date) => {
+  const handleSelectedDate = date => {
     return setmainDate(date);
   };
 
@@ -78,11 +80,22 @@ export const RequestTourContent = ({ info }) => {
       const dateToUse = new Date(mainDate);
       dateToUse.setUTCHours(hours - 1);
       dateToUse.setUTCMinutes(mins);
+
+      const isoLikeString = `${dateToUse.getFullYear()}-${(dateToUse.getMonth() + 1)
+        .toString()
+        .padStart(2, '0')}-${dateToUse.getDate().toString().padStart(2, '0')}T${dateToUse
+        .getHours()
+        .toString()
+        .padStart(2, '0')}:${dateToUse.getMinutes().toString().padStart(2, '0')}:${dateToUse
+        .getSeconds()
+        .toString()
+        .padStart(2, '0')}.${dateToUse.getMilliseconds().toString().padStart(3, '0')}Z`;
+
       proceedRequest.mutate({
-        time: dateToUse?.toISOString(),
+        time: isoLikeString,
         store_name: storeName,
         type: tourMode ? 'in-Person' : 'video',
-        mode: tourMode ? 'in-Person' : 'video'
+        mode: tourMode ? 'in-Person' : 'video',
       });
     } else
       toast({
@@ -90,199 +103,191 @@ export const RequestTourContent = ({ info }) => {
         status: 'error',
         duration: 5000,
         isClosable: true,
-        position: 'top-right'
+        position: 'top-right',
       });
   };
   return (
     <>
-      {proceedRequest.isSuccess ? (
-        <Center mt='20px' w='full' h='full' flexDirection={'column'}>
-          <Image alt='loader' w='150px' h='150px' src={successfulLoader.src} />
-          <Text
-            color='text'
-            textAlign={'center'}
-            fontWeight={{ base: 600, md: 500 }}
-            fontSize={'28px'}
-            my={{ base: '12px', md: '25px' }}
-            className='gilda-display-regular'
-          >
-            Inspection Schedule Successful
-          </Text>
-          <Text
-            color='text'
-            fontSize={{ base: '14px', md: '16px' }}
-            fontWeight='400'
-          >
-            We’ll get back to you as soon as possilble
-          </Text>
-        </Center>
-      ) : proceedRequest.isLoading ? (
-        <Center mt='20px' w='full' h='full' flexDirection={'column'}>
-          <Image alt='loader' w='150px' h='150px' src={processingLoader.src} />
-          <Text
-            color='text'
-            textAlign={'center'}
-            fontWeight={{ base: 600, md: 500 }}
-            fontSize={'28px'}
-            my={{ base: '12px', md: '25px' }}
-            className='gilda-display-regular'
-          >
-            Processing Request
-          </Text>
-          <Text
-            color='text'
-            fontSize={{ base: '14px', md: '16px' }}
-            fontWeight='400'
-          >
-            Wait a moment
-          </Text>
-        </Center>
-      ) : (
-        <Box>
-          <Flex
-            direction='row'
-            justify='space-between'
-            align={'center'}
-            mb={{ base: '25px', md: '25px' }}
-            className='montserrat-regular'
-          >
+      {
+        // proceedRequest.isSuccess
+        false ? (
+          <Center mt="20px" w="full" h="full" flexDirection={'column'}>
+            <Image alt="loader" w="150px" h="150px" src={successfulLoader.src} />
             <Text
-              color='text'
-              fontSize={'23px'}
-              fontWeight={500}
-              className='gilda-display-regular'
+              color="text"
+              textAlign={'center'}
+              fontWeight={{base: 600, md: 500}}
+              fontSize={'28px'}
+              my={{base: '12px', md: '25px'}}
+              className="gilda-display-regular"
             >
-              Schedule Inspection
+              Inspection Schedule Successful
             </Text>
-            {/* <CloseIcon
+            <Text color="text" fontSize={{base: '14px', md: '16px'}} fontWeight="400">
+              We’ll get back to you as soon as possilble
+            </Text>
+          </Center>
+        ) : // proceedRequest.isLoading
+        false ? (
+          <Center mt="20px" w="full" h="full" flexDirection={'column'}>
+            <Image alt="loader" w="150px" h="150px" src={processingLoader.src} />
+            <Text
+              color="text"
+              textAlign={'center'}
+              fontWeight={{base: 600, md: 500}}
+              fontSize={'28px'}
+              my={{base: '12px', md: '25px'}}
+              className="gilda-display-regular"
+            >
+              Processing Request
+            </Text>
+            <Text color="text" fontSize={{base: '14px', md: '16px'}} fontWeight="400">
+              Wait a moment
+            </Text>
+          </Center>
+        ) : (
+          <Box>
+            <Flex
+              direction="row"
+              justify="space-between"
+              align={'center'}
+              mb={{base: '25px', md: '26px'}}
+              className="montserrat-regular"
+            >
+              <Text
+                color="text"
+                fontSize={'23px'}
+                fontWeight={400}
+                className="gilda-display-regular"
+              >
+                Schedule Inspection
+              </Text>
+              {/* <CloseIcon
               color='text'
               cursor='pointer'
               fontSize='17px'
               // onClick={requestModal?.onClose}
             /> */}
-          </Flex>
-
-          <Flex direction={'column'} align={'stretch'} w='full' mb='27px'>
-            <FormLabel
-              mt='16px'
-              color='text'
-              fontSize={'19px'}
-              className='montserrat-regular'
-            >
-              Inspection type
-            </FormLabel>
-            <Flex justify={{ md: 'space-between' }} gap={`16px`} mt='8px'>
-              <Stack
-                gap={'2px'}
-                direction='row'
-                align='center'
-                className='request-checkbox'
-                onClick={() => setTourMode('In-Person')}
-              >
-                <Center
-                  cursor='pointer'
-                  border={'1px solid'}
-                  borderRadius={'full'}
-                  borderColor={'shade'}
-                  w='16px'
-                  h='16px'
-                >
-                  {tourMode === 'In-Person' && (
-                    <Box
-                      bg={'#191919'}
-                      w={'10px'}
-                      h={'10px'}
-                      borderRadius={'full'}
-                    />
-                  )}
-                </Center>
-                <Text
-                  color='text'
-                  fontWeight='500'
-                  className='montserrat-regular'
-                >
-                  In-Person
-                </Text>
-              </Stack>
-              <Stack
-                gap={'2px'}
-                direction='row'
-                align='center'
-                className='request-checkbox'
-                onClick={() => setTourMode('Video')}
-              >
-                <Center
-                  cursor='pointer'
-                  border={'1px solid'}
-                  borderRadius={'full'}
-                  borderColor={'shade'}
-                  w='16px'
-                  h='16px'
-                >
-                  {tourMode === 'Video' && (
-                    <Box
-                      bg={'#191919'}
-                      w={'10px'}
-                      h={'10px'}
-                      borderRadius={'full'}
-                    />
-                  )}
-                </Center>
-                <Text
-                  color='text'
-                  fontWeight='500'
-                  className='montserrat-regular'
-                >
-                  Video Chat
-                </Text>
-              </Stack>
+              {isLargeScreen ? (
+                <DrawerCloseButton position="initial" />
+              ) : (
+                <ModalCloseButton position="initial" />
+              )}
             </Flex>
-          </Flex>
 
-          <FormControl mb='15px'>
+            <Flex rowGap="12px" direction={'column'} align={'stretch'} w="full" mb="26px">
+              <FormLabel color="text" m="0px" fontSize={'16px'} className="montserrat-regular">
+                Inspection type
+              </FormLabel>
+              <Flex gap={`59px`}>
+                <Stack
+                  spacing={'8px'}
+                  direction="row"
+                  align="center"
+                  className="request-checkbox"
+                  onClick={() => setTourMode('In-Person')}
+                >
+                  <Center
+                    cursor="pointer"
+                    border={'1px solid'}
+                    borderRadius={'full'}
+                    borderColor={'shade'}
+                    w="16px"
+                    h="16px"
+                  >
+                    {tourMode === 'In-Person' && (
+                      <Box bg={'#191919'} w={'10px'} h={'10px'} borderRadius={'full'} />
+                    )}
+                  </Center>
+                  <Text
+                    color="#191919"
+                    fontSize="13px"
+                    fontWeight="500"
+                    className="montserrat-regular"
+                  >
+                    In-person
+                  </Text>
+                </Stack>
+                <Stack
+                  spacing={'8px'}
+                  direction="row"
+                  align="center"
+                  className="request-checkbox"
+                  onClick={() => setTourMode('Video')}
+                >
+                  <Center
+                    cursor="pointer"
+                    border={'1px solid'}
+                    borderRadius={'full'}
+                    borderColor={'shade'}
+                    w="16px"
+                    h="16px"
+                  >
+                    {tourMode === 'Video' && (
+                      <Box bg={'#191919'} w={'10px'} h={'10px'} borderRadius={'full'} />
+                    )}
+                  </Center>
+                  <Text
+                    fontSize="13px"
+                    color="#191919"
+                    fontWeight="500"
+                    className="montserrat-regular"
+                  >
+                    Video chat
+                  </Text>
+                </Stack>
+              </Flex>
+            </Flex>
+
+            {/* <FormControl mb='15px'>
             <CustomSingleDatePicker
               mainDate={mainDate}
               handleSelectedDate={handleSelectedDate}
             />
-          </FormControl>
+          </FormControl> */}
+            <SelectDateCarousel mainDate={mainDate} handleSelectedDate={handleSelectedDate} />
 
-          <FormControl mb='15px'>
-            <SelectTime setTime={setTime} time={time} />
-          </FormControl>
+            <FormControl>
+              <SelectTime setTime={setTime} time={time} />
+            </FormControl>
 
-          <Button
-            fontWeight='500'
-            disabled={proceedRequest.isLoading}
-            loading={proceedRequest.isLoading}
-            onClick={handleRequest}
-            w='full'
-            color='white'
-            bg='primary'
-            mt='30px'
-            p='26px'
-          >
-            <Text fontSize={`16px`} className='montserrat-regular'>
-              Send Request
-            </Text>
-          </Button>
-        </Box>
-      )}
+            <Button
+              disabled={proceedRequest.isLoading}
+              isLoading={proceedRequest.isLoading}
+              onClick={handleRequest}
+              whileHover={{scale: 1}}
+              w="full"
+              color="white"
+              bg="primary"
+              mt="48px"
+              minH="48px"
+              p="13px 32px"
+            >
+              <Text fontSize={`16px`} fontWeight="500" className="montserrat-regular">
+                Send Request
+              </Text>
+            </Button>
+          </Box>
+        )
+      }
     </>
   );
 };
 
-const RequestTour = ({ requestModal, info }) => {
-  const [screenWidth, setScreenWidth] = useState();
+const RequestTour = ({requestModal, info}) => {
+  // const [screenWidth, setScreenWidth] = useState();
 
-  useEffect(() => {
-    setScreenWidth(window.innerWidth);
+  // useEffect(() => {
+  //   setScreenWidth(window.innerWidth);
 
-    window.addEventListener('resize', () => {
-      setScreenWidth(window.innerWidth);
-    });
-  }, []);
+  //   window.addEventListener('resize', () => {
+  //     setScreenWidth(window.innerWidth);
+  //   });
+  // }, []);
 
-  return screenWidth >= 768 ? (
+  const [isLargeScreen] = useMediaQuery('(min-width: 769px)');
+
+  return isLargeScreen ? (
     <Modal
       autoFocus={false}
       isCentered
@@ -291,15 +296,14 @@ const RequestTour = ({ requestModal, info }) => {
     >
       <ModalOverlay />
       <ModalContent
-        bg='card_bg'
-        maxW='460px'
-        minH='437px'
-        px={{ base: '24px', md: '32px' }}
-        py={{ base: '24px', md: '32px' }}
-        borderRadius={{ base: '10px', md: '0px' }}
+        bg="card_bg"
+        maxW="460px"
+        minH="437px"
+        px={{base: '24px', md: '32px'}}
+        py={{base: '24px', md: '32px'}}
+        borderRadius={{base: '10px', md: '0px'}}
       >
-        <ModalCloseButton />
-        <RequestTourContent info={info} />
+        <RequestTourContent requestModal={requestModal} info={info} />
       </ModalContent>
     </Modal>
   ) : (
@@ -308,16 +312,11 @@ const RequestTour = ({ requestModal, info }) => {
       isCentered
       onClose={requestModal?.onClose}
       isOpen={requestModal?.isOpen}
-      placement='bottom'
+      placement="bottom"
     >
       <DrawerOverlay />
-      <DrawerContent
-        bg='card_bg'
-        px={{ base: '24px', md: '32px' }}
-        py={{ base: '24px', md: '32px' }}
-      >
-        <DrawerCloseButton />
-        <RequestTourContent info={info} />
+      <DrawerContent bg="card_bg" px={{base: '24px', md: '32px'}} py={{base: '24px', md: '32px'}}>
+        <RequestTourContent requestModal={requestModal} info={info} />
       </DrawerContent>
     </Drawer>
   );

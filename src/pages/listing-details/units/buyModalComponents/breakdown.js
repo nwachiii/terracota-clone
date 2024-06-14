@@ -66,7 +66,7 @@ const Breakdown = ({selectedPlan, setStep, buyModal, customScrollbarStyles, onCl
 
   const mainContent = (
     <Box h={'fit-content'} overflowY={'scroll'} __css={customScrollbarStyles}>
-      <Flex display={{base: 'none', md: 'flex'}} justify={'space-between'} align={'center'}>
+      <Flex justify={'space-between'} align={'center'}>
         <HStack spacing="12px" onClick={() => setStep('summary')} cursor="pointer">
           <ArrowBackIcon fontSize={'25px'} cursor="pointer" color="text" />
           <Text
@@ -81,6 +81,7 @@ const Breakdown = ({selectedPlan, setStep, buyModal, customScrollbarStyles, onCl
       </Flex>
 
       <VStack
+        mt="20px"
         w="full"
         gap={'12px'}
         maxH="50vh"
@@ -101,10 +102,10 @@ const Breakdown = ({selectedPlan, setStep, buyModal, customScrollbarStyles, onCl
           border="1px solid"
           borderColor={'shade'}
         >
-          <Text color="#4B4B4B" fontSize={'13px'} fontWeight={500}>
+          <Text color="#191919" fontSize={'13px'} fontWeight={500}>
             Initial Deposit
           </Text>
-          <Text color="#4B4B4B" fontSize={'19x'} fontWeight={500}>
+          <Text color="#191919" fontSize={'19x'} fontWeight={500}>
             {formatToCurrency(selectedPlan?.initial_deposit_in_value)}
           </Text>
         </Flex>
@@ -127,27 +128,22 @@ const Breakdown = ({selectedPlan, setStep, buyModal, customScrollbarStyles, onCl
                 borderRadius={'2px'}
                 border="1px solid"
                 borderColor={'shade'}
+                position={'relative'}
               >
-                <Text color="#4B4B4B" fontSize={'13px'} fontWeight={500}>
+                <Box position={'absolute'} p="2.316px 4.631px" bg="#E4E4E4" top={0} right={0}>
+                  <Text fontSize={'10px'} fontWeight={400} color={'#606060'}>
+                    {`Due After ${item?.period_in_months} month${
+                      Number(item?.period_in_months) > 1 ? 's' : ''
+                    }`}
+                  </Text>
+                </Box>
+
+                <Text color="#191919" fontSize={'13px'} fontWeight={500}>
                   {getOrdinal(idx + 1)} payment
                 </Text>
-                <Text color="#4B4B4B" fontSize={'19x'} fontWeight={500}>
+                <Text color="#191919" fontSize={'19x'} fontWeight={500}>
                   {item?.amount ? formatToCurrency(item?.amount) : '-'}
                 </Text>
-
-                <VStack
-                  borderRadius="38.4px"
-                  bg="primaryFilterOpacity"
-                  justify="center"
-                  h="16.4px"
-                  align="center"
-                  py="3.2px"
-                  px="8px"
-                >
-                  <Text fontSize="8px" color="primary" fontWeight="500">
-                    Due Date: After {item?.period_in_months} month(s)
-                  </Text>
-                </VStack>
               </Flex>
             ))}
           </>

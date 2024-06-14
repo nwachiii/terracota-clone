@@ -41,13 +41,13 @@ const ProfileMenu = ({
 
   return (
     <Menu h="fit-content" bg="card_bg">
-      <MenuButton alignItems="center" pb="10px">
+      <MenuButton alignItems="center">
         <Button
           borderRadius={0}
           color={'#000'}
           className="gilda-display-regular"
           bg="primary"
-          py="26px"
+          py="11px"
           px="21px"
           gap={'8px'}
           as={motion.div}
@@ -56,6 +56,7 @@ const ProfileMenu = ({
           cursor={'pointer'}
           whileTap={{scale: 0.9}}
           whileHover={{scale: 1.1}}
+          fontWeight={`400`}
           leftIcon={
             <Image
               alt="profile_icon"
@@ -138,7 +139,7 @@ const ProfileMenu = ({
           </Flex>
         </MenuItem>
 
-        <MenuItem onClick={() => router.push('/theme-toggler')} bg="card_bg">
+        {/* <MenuItem onClick={() => router.push('/theme-toggler')} bg="card_bg">
           <Flex gap={3} align="center" py="5px">
             <img
               w="30px"
@@ -149,7 +150,7 @@ const ProfileMenu = ({
               Change Theme
             </Text>
           </Flex>
-        </MenuItem>
+        </MenuItem> */}
 
         <MenuItem onClick={handleLogout} bg="card_bg">
           <Flex gap={3} align="center">

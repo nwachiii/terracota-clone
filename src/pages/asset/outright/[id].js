@@ -45,14 +45,18 @@ import OutrightTransactionInfo from '../../../components/manageAssets/outrightTr
 import Allocations from '../../../components/manageAssets/components/allocation';
 import {Spinner} from '../../../ui-lib';
 
+const absoluteStyle = {
+  top: '20vh',
+};
+
 const OutrightAsset = () => {
   const {query} = useRouter();
   const [displayTab, setDisplayTab] = useState('transaction');
-  const [isBelowMd] = useMediaQuery('(max-width: 48em)');
+
   const recurringModal = useDisclosure();
 
   const depositModal = useDisclosure();
-  const PICK_ALLOCATION_MODAL = useDisclosure();
+
   const homeOwnersPacketModal = useDisclosure();
   const {data, isLoading, isError, refetch} = useQuery(
     ['fetchUserEquity', query?.id],
@@ -61,7 +65,7 @@ const OutrightAsset = () => {
   );
   const info = data?.data;
   const feedModal = useDisclosure();
-  console.log({info});
+
   const handleDisplaySwitch = prop => () => setDisplayTab(prop);
 
   // useEffect(() => {
@@ -74,10 +78,10 @@ const OutrightAsset = () => {
   // }, [isBelowMd]);
 
   const OVERVIEWINFO = [
-    {
-      label: 'Property Type',
-      value: info?.project?.building_type ?? '-',
-    },
+    // {
+    //   label: 'Property Type',
+    //   value: info?.project?.building_type ?? '-',
+    // },
     {
       label: 'Land Title',
       value: info?.project?.land_title ?? '-',
@@ -87,7 +91,7 @@ const OutrightAsset = () => {
       value: info?.project?.status ?? '-',
     },
     {
-      label: 'Building size',
+      label: 'Unit size',
       value: `${info?.project?.land_size ?? '-'} sqm`,
     },
 
@@ -105,14 +109,15 @@ const OutrightAsset = () => {
       display: 'none',
     },
   };
+
   return (
     <>
-      <LayoutView navBarStyle={navBarStyle} noPadding>
+      <LayoutView spacing="0px" navBarStyle={navBarStyle} noPadding>
         <AssetWrapper>
           {isError ? (
             <ErrorState />
           ) : isLoading || !info ? (
-            <Spinner color="#DDB057" />
+            <Spinner absoluteStyle={absoluteStyle} color="#DDB057" />
           ) : (
             <>
               <AssetHeader
@@ -132,7 +137,7 @@ const OutrightAsset = () => {
                   overviewInfo={OVERVIEWINFO}
                   spacing={{base: '24px', xl: '23.5px'}}
                   p={{xl: '23.5px'}}
-                  maxH={{base: 'full', xl: '486.5px'}}
+                  maxH={{base: 'full', xl: '365px'}}
                   maxW={{base: 'full', xl: '646.13px'}}
                   w={{base: 'full', xl: 'full'}}
                   display={{
@@ -239,4 +244,4 @@ const OutrightAsset = () => {
   );
 };
 
-export default Auth(OutrightAsset, {color: '#DDB057'});
+export default Auth(OutrightAsset, {color: '#DDB057', absoluteStyle});

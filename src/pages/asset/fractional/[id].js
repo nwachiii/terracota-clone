@@ -43,6 +43,10 @@ import AssetOverviewWrapper from '../../../components/manageAssets/components/la
 import FractionalTransactionInfo from '../../../components/manageAssets/fractionalTransactionInfo';
 import {Spinner} from '../../../ui-lib';
 
+const absoluteStyle = {
+  top: '20vh',
+};
+
 const FractionalAsset = () => {
   const {query} = useRouter();
   const [displayTab, setDisplayTab] = useState('transaction');
@@ -97,10 +101,6 @@ const FractionalAsset = () => {
 
   const OVERVIEWINFO = [
     {
-      label: 'Property Type',
-      value: info?.project?.building_type ?? '-',
-    },
-    {
       label: 'Land Title',
       value: info?.project?.land_title ?? '-',
     },
@@ -109,7 +109,7 @@ const FractionalAsset = () => {
       value: info?.project?.status ?? '-',
     },
     {
-      label: 'Building size',
+      label: 'Unit size',
       value: `${info?.project?.land_size ?? '-'} sqm`,
     },
   ];
@@ -121,14 +121,15 @@ const FractionalAsset = () => {
       display: 'none',
     },
   };
+
   return (
     <>
-      <LayoutView navBarStyle={navBarStyle} noPadding>
+      <LayoutView spacing="0px" navBarStyle={navBarStyle} noPadding>
         <AssetWrapper>
           {isError ? (
             <ErrorState />
           ) : isLoading || !info ? (
-            <Spinner color="#DDB057" />
+            <Spinner absoluteStyle={absoluteStyle} color="#DDB057" />
           ) : (
             <>
               <AssetHeader
@@ -148,7 +149,7 @@ const FractionalAsset = () => {
                   overviewInfo={OVERVIEWINFO}
                   spacing={{base: '24px', xl: '23.5px'}}
                   p={{xl: '23.5px'}}
-                  maxH={{base: 'full', xl: '486.5px'}}
+                  maxH={{base: 'full', xl: '436px'}}
                   maxW={{base: 'full', xl: '646.13px'}}
                   w={{base: 'full', xl: 'full'}}
                   display={{
@@ -317,4 +318,4 @@ const FractionalAsset = () => {
   );
 };
 
-export default Auth(FractionalAsset, {color: '#DDB057'});
+export default Auth(FractionalAsset, {color: '#DDB057', absoluteStyle});

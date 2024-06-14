@@ -20,13 +20,17 @@ export const storeName = 'mainstone';
 
 export const appWindow = typeof window !== 'undefined' ? window : null;
 
-export const LoggedinUser = appWindow
-  ? JSON?.parse(localStorage.getItem('LoggedinUser'))
-  : global?.location?.reload();
+export const LoggedinUser =
+  appWindow && localStorage
+    ? JSON?.parse(localStorage.getItem('LoggedinUser'))
+    : global?.location?.reload();
 
-export const STORE = appWindow
-  ? JSON?.parse(localStorage.getItem('storeDetails'))
-  : global?.location?.reload();
+export const STORE =
+  appWindow && localStorage
+    ? JSON?.parse(localStorage.getItem('storeDetails'))
+    : global?.location?.reload();
 
 export const BUSINESS_ID = () =>
-  appWindow ? JSON?.parse(localStorage.getItem('businessId')) : global?.location?.reload();
+  appWindow && localStorage
+    ? JSON?.parse(localStorage.getItem('businessId'))
+    : global?.location?.reload();

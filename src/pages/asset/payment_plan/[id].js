@@ -47,6 +47,10 @@ import feedbackIcon from '/src/images/icons/feedbackIcon.svg';
 import PaymentPlanTransaction from '../../../components/manageAssets/payment_plan/paymentPlanTransaction';
 import {Spinner} from '../../../ui-lib';
 
+const absoluteStyle = {
+  top: '20vh',
+};
+
 const PaymentPlan = () => {
   const {query} = useRouter();
   const recurringModal = useDisclosure();
@@ -68,10 +72,10 @@ const PaymentPlan = () => {
   const handleDisplaySwitch = prop => () => setDisplayTab(prop);
 
   const OVERVIEWINFO = [
-    {
-      label: 'Property Type',
-      value: info?.project?.building_type ?? '-',
-    },
+    // {
+    //   label: 'Property Type',
+    //   value: info?.project?.building_type ?? '-',
+    // },
     {
       label: 'Land Title',
       value: info?.project?.land_title ?? '-',
@@ -81,7 +85,7 @@ const PaymentPlan = () => {
       value: info?.project?.status ?? '-',
     },
     {
-      label: 'Building size',
+      label: 'Unit size',
       value: `${info?.project?.land_size ?? '-'} sqm`,
     },
 
@@ -98,6 +102,7 @@ const PaymentPlan = () => {
       display: 'none',
     },
   };
+
   return (
     <>
       <LayoutView spacing="0px" navBarStyle={navBarStyle} noPadding>
@@ -105,7 +110,7 @@ const PaymentPlan = () => {
           {isError ? (
             <ErrorState />
           ) : isLoading || !info ? (
-            <Spinner color="#DDB057" />
+            <Spinner absoluteStyle={absoluteStyle} color="#DDB057" />
           ) : (
             <>
               <AssetHeader
@@ -126,7 +131,7 @@ const PaymentPlan = () => {
                   overviewInfo={OVERVIEWINFO}
                   spacing={{base: '24px', xl: '23.5px'}}
                   p={{xl: '23.5px'}}
-                  maxH={{base: 'full', xl: '500.5px'}}
+                  maxH={{base: 'full', xl: '460px'}}
                   maxW={{base: 'full', xl: '626.856px'}}
                   w={{base: 'full', xl: 'full'}}
                   display={{
@@ -322,4 +327,4 @@ const PaymentPlan = () => {
   );
 };
 
-export default Auth(PaymentPlan, {color: '#DDB057'});
+export default Auth(PaymentPlan, {color: '#DDB057', absoluteStyle});

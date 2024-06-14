@@ -5,7 +5,7 @@ import {LIGHT} from '../../../constants/names';
 const primary = '#DDB057';
 const primaryShade = '#DAB91F88';
 
-export const Spinner = ({noAbsolute, size, ...rest}) =>
+export const Spinner = ({noAbsolute, absoluteStyle, size, ...rest}) =>
   noAbsolute ? (
     <RegularSpinner
       thickness="10px"
@@ -16,12 +16,12 @@ export const Spinner = ({noAbsolute, size, ...rest}) =>
       {...resolveStyleConfig}
     />
   ) : (
-    <OvalLoader {...rest} />
+    <OvalLoader absoluteStyle={absoluteStyle} {...rest} />
   );
 
-export const OvalLoader = ({...rest}) => {
+export const OvalLoader = ({absoluteStyle, ...rest}) => {
   return (
-    <AbsoluteCenter color={`text`}>
+    <AbsoluteCenter color={`text`} {...absoluteStyle}>
       <Oval
         height={80}
         width={80}

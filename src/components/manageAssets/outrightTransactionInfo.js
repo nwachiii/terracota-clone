@@ -44,14 +44,14 @@ const OutrightTransactionInfo = ({displayTab}) => {
   }, []);
 
   const arrayData = TRANSACTIONS_HISTORY?.data?.data ?? [];
-  console.log({arrayData});
+
   return (
     <Stack
       sx={customScrollbarStyles()}
       id="tnxsHistory"
       overflowY="auto"
       scrollBehavior="smooth"
-      maxH={{base: 'full', xl: '486.5px'}}
+      maxH={{base: 'full', xl: '365px'}}
       maxW={{base: 'full', xl: '627.54px'}}
       w={{base: 'full', xl: '627.54px'}}
       spacing={{base: 'none', xl: '18px'}}

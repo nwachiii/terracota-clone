@@ -32,7 +32,6 @@ const Allocations = ({equity, refetch}) => {
   const [screen, setScreen] = useState(defaultScrn);
   const {isOpen, onClose, onOpen} = useDisclosure();
   const [allocationVal, setAllocationVal] = useState('');
-  const toaster = CreateToast();
 
   const [uploads, setUploads] = useState([]);
 
@@ -191,7 +190,11 @@ const Allocations = ({equity, refetch}) => {
             </Tooltip>
           </Center>
         )
-      ) : null}
+      ) : (
+        <Text color="#191919" fontSize={{base: '10px', md: '11.297px'}} fontWeight="400">
+          Not allocated yet
+        </Text>
+      )}
       <Morphed
         isOpen={isOpen}
         onClose={handleClose}

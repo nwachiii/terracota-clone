@@ -21,6 +21,7 @@ import CoOwnersList from './CoOwnersList';
 import {useQuery} from 'react-query';
 import {fetchListOfCoowners} from '../../../api/co_owners';
 import {LoggedinUser} from '../../../constants/routes';
+import {ChevronLeftIcon, CloseIcon} from '@chakra-ui/icons';
 
 const PendingTransactions = ({assetData, drawer, isError, isLoading}) => {
   const [type, setType] = useState('list');
@@ -85,36 +86,44 @@ const PendingTransactions = ({assetData, drawer, isError, isLoading}) => {
         w="full"
         minH="20vh"
         h={'fit-content'}
-        p="16px"
         maxW={'500px'}
-        maxH={'711px'}
         bg="#FBFCFC"
         px="0"
+        position={'relative'}
       >
-        <Box px="24px" pt={'8px'} mb="38px">
+        <Box
+          px="14px"
+          py={'18px'}
+          mb="38px"
+          position={'absolute'}
+          top="0"
+          bg="white"
+          right={0}
+          w="full"
+          zIndex={200}
+        >
           <Flex w="full" h="20px" justify={'space-between'} align={'center'}>
             {type === 'list' ? (
               <Text
                 color="text"
                 fontSize={'23px'}
-                fontWeight={600}
+                fontWeight={400}
                 className="gilda-display-regular"
               >
                 Pending Transaction
               </Text>
             ) : type === 'breakdown' ? (
               <HStack align={'center'}>
-                <Icon
-                  color="text"
-                  as={BsArrowLeft}
-                  fontSize={'27px'}
-                  style={{cursor: 'pointer'}}
+                <ChevronLeftIcon
+                  cursor={'pointer'}
                   onClick={handleBackFromBreakdown}
+                  fontSize={'35px'}
+                  color={'text'}
                 />
                 <Text
                   color="text"
                   fontSize={'23px'}
-                  fontWeight={600}
+                  fontWeight={400}
                   className="gilda-display-regular"
                 >
                   Payment Breakdown
@@ -122,17 +131,16 @@ const PendingTransactions = ({assetData, drawer, isError, isLoading}) => {
               </HStack>
             ) : type === 'coOwnersList' ? (
               <HStack align={'center'}>
-                <Icon
-                  color="text"
-                  as={BsArrowLeft}
-                  fontSize={'27px'}
-                  style={{cursor: 'pointer'}}
+                <ChevronLeftIcon
+                  cursor={'pointer'}
                   onClick={() => setType('coOwn')}
+                  fontSize={'35px'}
+                  color={'text'}
                 />
                 <Text
                   color="text"
                   fontSize={'23px'}
-                  fontWeight={600}
+                  fontWeight={400}
                   className="gilda-display-regular"
                 >
                   Co-owners {asset?.offer_started ? '(payment)' : '(acceptance)'}
@@ -140,17 +148,16 @@ const PendingTransactions = ({assetData, drawer, isError, isLoading}) => {
               </HStack>
             ) : type === 'summary' || type === 'coOwn' ? (
               <HStack align={'center'}>
-                <Icon
-                  color="text"
-                  as={BsArrowLeft}
-                  fontSize={'27px'}
-                  style={{cursor: 'pointer'}}
+                <ChevronLeftIcon
+                  cursor={'pointer'}
                   onClick={() => setType('list')}
+                  fontSize={'35px'}
+                  color={'text'}
                 />
                 <Text
                   color="text"
                   fontSize={'23px'}
-                  fontWeight={600}
+                  fontWeight={400}
                   className="gilda-display-regular"
                 >
                   Summary
@@ -158,27 +165,25 @@ const PendingTransactions = ({assetData, drawer, isError, isLoading}) => {
               </HStack>
             ) : (
               <HStack align={'center'}>
-                <Icon
-                  color="text"
-                  as={BsArrowLeft}
-                  fontSize={'27px'}
-                  style={{cursor: 'pointer'}}
+                <ChevronLeftIcon
+                  cursor={'pointer'}
                   onClick={() => setType('list')}
+                  fontSize={'35px'}
+                  color={'text'}
                 />
                 <Text
                   color="text"
                   fontSize={'23px'}
-                  fontWeight={600}
+                  fontWeight={400}
                   className="gilda-display-regular"
                 >
                   Payment Method
                 </Text>
               </HStack>
             )}
-            <Icon
-              as={RxCross1}
-              style={{cursor: 'pointer'}}
-              fontSize={22}
+            <CloseIcon
+              cursor={'pointer'}
+              fontSize={'14px'}
               color="text"
               onClick={drawer?.onClose}
             />
@@ -186,106 +191,108 @@ const PendingTransactions = ({assetData, drawer, isError, isLoading}) => {
         </Box>
         {/* <Box w="full" borderBottom="1px solid" borderColor={'shade'} mb="21px" mt={'14px'} /> */}
 
-        {type === 'list' ? (
-          <TransactionsList
-            assetData={assetData}
-            drawer={drawer}
-            isError={isError}
-            isLoading={isLoading}
-            type={type}
-            setType={setType}
-            asset={asset}
-            setAsset={setAsset}
-            customScrollbarStyles={customScrollbarStyles}
-            setAmountToPay={setAmountToPay}
-            amount={amount}
-            coowners={coowners}
-            coOwnerLoading={coOwnerLoading}
-          />
-        ) : type === 'summary' ? (
-          <SummaryDrawer
-            assetData={assetData}
-            drawer={drawer}
-            isError={isError}
-            isLoading={isLoading}
-            type={type}
-            setType={setType}
-            asset={asset}
-            setAsset={setAsset}
-            customScrollbarStyles={customScrollbarStyles}
-            setAmountToPay={setAmountToPay}
-            amount={amount}
-            coowners={coowners}
-            coOwnerLoading={coOwnerLoading}
-          />
-        ) : type === 'coOwn' ? (
-          <CoOwnSummary
-            isTheHost={isTheHost}
-            assetData={assetData}
-            drawer={drawer}
-            isError={isError}
-            isLoading={isLoading}
-            type={type}
-            setType={setType}
-            asset={asset}
-            setAsset={setAsset}
-            customScrollbarStyles={customScrollbarStyles}
-            setAmountToPay={setAmountToPay}
-            amount={amount}
-            coowners={coowners}
-            coOwnerLoading={coOwnerLoading}
-          />
-        ) : type === 'breakdown' ? (
-          <Breakdown
-            assetData={assetData}
-            drawer={drawer}
-            isError={isError}
-            isLoading={isLoading}
-            type={type}
-            setType={setType}
-            asset={asset}
-            setAsset={setAsset}
-            customScrollbarStyles={customScrollbarStyles}
-            setAmountToPay={setAmountToPay}
-            amountToPay={amount}
-            coowners={coowners}
-            coOwnerLoading={coOwnerLoading}
-          />
-        ) : type === 'coOwnersList' ? (
-          <CoOwnersList
-            theHost={theHost}
-            isTheHost={isTheHost}
-            assetData={assetData}
-            drawer={drawer}
-            isError={isError}
-            isLoading={isLoading}
-            type={type}
-            setType={setType}
-            asset={asset}
-            setAsset={setAsset}
-            customScrollbarStyles={customScrollbarStyles}
-            setAmountToPay={setAmountToPay}
-            amountToPay={amount}
-            coowners={coowners}
-            coOwnerLoading={coOwnerLoading}
-          />
-        ) : (
-          <PaymentDrawer
-            assetData={assetData}
-            drawer={drawer}
-            isError={isError}
-            isLoading={isLoading}
-            type={type}
-            setType={setType}
-            asset={asset}
-            setAsset={setAsset}
-            customScrollbarStyles={customScrollbarStyles}
-            setAmountToPay={setAmountToPay}
-            amount={amount}
-            coowners={coowners}
-            coOwnerLoading={coOwnerLoading}
-          />
-        )}
+        <Box minH="45vh" maxH="65vh" pt="68px" w="full" h={'fit-content'} overflowY={'scroll'}>
+          {type === 'list' ? (
+            <TransactionsList
+              assetData={assetData}
+              drawer={drawer}
+              isError={isError}
+              isLoading={isLoading}
+              type={type}
+              setType={setType}
+              asset={asset}
+              setAsset={setAsset}
+              customScrollbarStyles={customScrollbarStyles}
+              setAmountToPay={setAmountToPay}
+              amount={amount}
+              coowners={coowners}
+              coOwnerLoading={coOwnerLoading}
+            />
+          ) : type === 'summary' ? (
+            <SummaryDrawer
+              assetData={assetData}
+              drawer={drawer}
+              isError={isError}
+              isLoading={isLoading}
+              type={type}
+              setType={setType}
+              asset={asset}
+              setAsset={setAsset}
+              customScrollbarStyles={customScrollbarStyles}
+              setAmountToPay={setAmountToPay}
+              amount={amount}
+              coowners={coowners}
+              coOwnerLoading={coOwnerLoading}
+            />
+          ) : type === 'coOwn' ? (
+            <CoOwnSummary
+              isTheHost={isTheHost}
+              assetData={assetData}
+              drawer={drawer}
+              isError={isError}
+              isLoading={isLoading}
+              type={type}
+              setType={setType}
+              asset={asset}
+              setAsset={setAsset}
+              customScrollbarStyles={customScrollbarStyles}
+              setAmountToPay={setAmountToPay}
+              amount={amount}
+              coowners={coowners}
+              coOwnerLoading={coOwnerLoading}
+            />
+          ) : type === 'breakdown' ? (
+            <Breakdown
+              assetData={assetData}
+              drawer={drawer}
+              isError={isError}
+              isLoading={isLoading}
+              type={type}
+              setType={setType}
+              asset={asset}
+              setAsset={setAsset}
+              customScrollbarStyles={customScrollbarStyles}
+              setAmountToPay={setAmountToPay}
+              amountToPay={amount}
+              coowners={coowners}
+              coOwnerLoading={coOwnerLoading}
+            />
+          ) : type === 'coOwnersList' ? (
+            <CoOwnersList
+              theHost={theHost}
+              isTheHost={isTheHost}
+              assetData={assetData}
+              drawer={drawer}
+              isError={isError}
+              isLoading={isLoading}
+              type={type}
+              setType={setType}
+              asset={asset}
+              setAsset={setAsset}
+              customScrollbarStyles={customScrollbarStyles}
+              setAmountToPay={setAmountToPay}
+              amountToPay={amount}
+              coowners={coowners}
+              coOwnerLoading={coOwnerLoading}
+            />
+          ) : (
+            <PaymentDrawer
+              assetData={assetData}
+              drawer={drawer}
+              isError={isError}
+              isLoading={isLoading}
+              type={type}
+              setType={setType}
+              asset={asset}
+              setAsset={setAsset}
+              customScrollbarStyles={customScrollbarStyles}
+              setAmountToPay={setAmountToPay}
+              amount={amount}
+              coowners={coowners}
+              coOwnerLoading={coOwnerLoading}
+            />
+          )}
+        </Box>
       </DrawerContent>
     </Drawer>
   );

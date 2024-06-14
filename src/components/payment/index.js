@@ -27,8 +27,8 @@ import ConfirmCard from './ConfirmCard';
 import {useAssetPayment} from '../../ui-lib/ui-lib.hooks';
 import processingLoader from '../../images/processing-transaction.gif';
 import successfulLoader from '../../images/successful-transaction.gif';
-
 import isMobile from '../../utils/extras';
+
 const PaymentModal = ({
   setStep,
   paymentType,
@@ -160,15 +160,10 @@ const PaymentModal = ({
             align={'center'}
             justify={'center'}
           >
-            <Text color="text" fontWeight={400} fontSize={{base: '14px', md: '16px'}}>
+            <Text color="text" fontWeight={400} fontSize={{base: '16px', md: '16px'}}>
               You will Pay
             </Text>
-            <Text
-              className="gilda-display-regular"
-              color="text"
-              fontWeight={500}
-              fontSize={{base: '34px', md: '34px'}}
-            >
+            <Text color="#4B4B4B" fontWeight={600} fontSize={{base: '28px', md: '34px'}}>
               {formatToCurrency(formattedAmount)}
             </Text>
           </Flex>

@@ -9,18 +9,13 @@ export const Button = ({bg, background, bgColor, children, ...rest}) => {
       as={motion.button}
       whileTap={{scale: 0.9}}
       whileHover={{scale: 1.04}}
-      bg={bgColor || background || bg || '#191919'}
-      _hover={''}
-      _focus={''}
-      _active={''}
+      bg={bg || background || bgColor}
+      _hover={bg || background || bgColor}
+      _focus={bg || background || bgColor}
+      _active={bg || background || bgColor}
       {...rest}
     >
-      <Text
-        fontSize={rest.fontSize || { base: '11px', md: '16px' }}
-        color={rest.color || '#fff'}
-      >
-        {children}
-      </Text>
+      {children}
     </ChakraButton>
   );
 };

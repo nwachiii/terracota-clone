@@ -93,7 +93,7 @@ const FractionalTransactionInfo = ({displayTab, dividendObj}) => {
       id="tnxsHistory"
       overflowY="auto"
       scrollBehavior="smooth"
-      maxH={{base: '530px', xl: '486.5px'}}
+      maxH={{base: '500px', xl: '436px'}}
       maxW={{base: 'full', xl: '627.54px'}}
       w={{base: 'full', xl: '627.54px'}}
       spacing={{base: 'none', xl: '18px'}}

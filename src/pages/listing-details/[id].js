@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {Box, Flex, HStack, Image, Text, VStack} from '@chakra-ui/react';
+import {Box, Center, Flex, HStack, Image, Text, VStack} from '@chakra-ui/react';
 import {themeStyles} from '../../theme';
 import LayoutView from '../../components/layout';
 import {Spinner} from '../../ui-lib';
@@ -42,8 +42,9 @@ const ListingDetails = () => {
       <Mobile />
       <LayoutView display={{base: 'none', lg: 'flex'}}>
         {isLoading ? (
-          <Spinner />
-        ) : isError ? (
+          <Center minH={`70vh`}>
+          <Spinner noAbsolute />
+        </Center>        ) : isError ? (
           <ErrorState />
         ) : (
           <>

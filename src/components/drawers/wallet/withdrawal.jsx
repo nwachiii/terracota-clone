@@ -81,11 +81,23 @@ const WithdrawalWallet = ({ setPage, onWalClose }) => {
   }
 
   const handleInput = e => {
-    const formatNumber = parseInt(e.target.value.replace(/,/g, '')).toLocaleString();
-    if (formatNumber !== 'NaN')
-      formik.setFieldValue('amount', formatNumber)
-    else
-      formik.setFieldValue('amount', '')
+    const input = e.target;
+    let val = input.value;
+
+    const cleanedString = val.replace(/[^\d]/g, ''); // Remove non-numeric characters
+    val = cleanedString.replace(/^0+(?=\d)/, '');
+
+    const length = val.length;
+
+    if (length <= 2) {
+      val = '0.' + val.padStart(2, '0');
+    } else {
+      const integerPart = val.slice(0, length - 2);
+      const decimalPart = val.slice(-2);
+      val = integerPart + '.' + decimalPart;
+    }
+
+    setAmount(val);
   };
 
   return (
@@ -110,10 +122,10 @@ const WithdrawalWallet = ({ setPage, onWalClose }) => {
           <FormControl>
           <Stack align="center" justify="center" py={8} w="full" bg="#F6F6F6">
             <Text
-              className="montserrat-bold"
+              fontFamily='Myriad Pro'
               textAlign={'center'}
               color="text"
-              fontSize={{base: '11px', md: '13px'}}
+              fontSize={16}
               fontWeight={{base: '400', md: '600'}}
             >{`Enter Amount to withdraw`}</Text>
             <FormInput

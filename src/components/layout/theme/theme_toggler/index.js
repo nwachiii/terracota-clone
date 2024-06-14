@@ -1,16 +1,9 @@
-import {
-  Button,
-  Center,
-  Collapse,
-  Flex,
-  Text,
-  useDisclosure,
-} from '@chakra-ui/react';
-import { useState } from 'react';
+import {Button, Center, Collapse, Flex, Text, useDisclosure} from '@chakra-ui/react';
+import {useState} from 'react';
 
-export const ThemeToggle = ({ changeTheme }) => {
+export const ThemeToggle = ({changeTheme}) => {
   const [toggleWidth, setToggleWidth] = useState('15rem');
-  const { isOpen, onToggle } = useDisclosure();
+  const {isOpen, onToggle} = useDisclosure();
   const [activeTheme, setactiveThemeName] = useState('');
 
   const handleShow = () => {
@@ -47,7 +40,7 @@ export const ThemeToggle = ({ changeTheme }) => {
           transition={'.5s'}
           bg="transparent"
           p={isOpen ? '2rem' : '5.5rem 4rem'}
-          _hover={{ backgroundColor: 'transparent' }}
+          _hover={{backgroundColor: 'transparent'}}
         >
           <Text
             transition={'.5s'}
@@ -70,8 +63,8 @@ export const ThemeToggle = ({ changeTheme }) => {
             in={isOpen}
             animateOpacity
             transition={{
-              exit: { duration: 0.5 },
-              enter: { delay: 0.5, duration: 0.5 },
+              exit: {duration: 0.5},
+              enter: {delay: 0.5, duration: 0.5},
             }}
           >
             <Flex direction={'column'} transition={'.5s'} gap={'1rem'}>
@@ -79,7 +72,7 @@ export const ThemeToggle = ({ changeTheme }) => {
                 p="2rem"
                 bg="matador_background.300"
                 color="matador_text.200"
-                _hover={{ backgroundColor: 'inherit' }}
+                _hover={{backgroundColor: 'inherit'}}
                 fontSize={'1.6rem'}
                 onClick={() => selectTheme('light')}
               >
@@ -89,7 +82,7 @@ export const ThemeToggle = ({ changeTheme }) => {
                 p="2rem"
                 bg="matador_background.300"
                 color="matador_text.200"
-                _hover={{ backgroundColor: 'inherit' }}
+                _hover={{backgroundColor: 'inherit'}}
                 fontSize={'1.6rem'}
                 onClick={() => selectTheme('darkGrey')}
               >
@@ -99,7 +92,7 @@ export const ThemeToggle = ({ changeTheme }) => {
                 p="2rem"
                 bg="matador_background.300"
                 color="matador_text.200"
-                _hover={{ backgroundColor: 'inherit' }}
+                _hover={{backgroundColor: 'inherit'}}
                 fontSize={'1.6rem'}
                 onClick={() => selectTheme('darkBlue')}
               >
@@ -109,7 +102,7 @@ export const ThemeToggle = ({ changeTheme }) => {
                 p="2rem"
                 bg="matador_background.300"
                 color="matador_text.200"
-                _hover={{ backgroundColor: 'inherit' }}
+                _hover={{backgroundColor: 'inherit'}}
                 fontSize={'1.6rem'}
                 onClick={() => selectTheme(`darkGreen`)}
               >

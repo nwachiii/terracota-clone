@@ -57,7 +57,7 @@ export const CardThree = ({
       whileTap={{scale: 0.98}}
       whileHover={{scale: 1.01}}
       // style={{aspectRatio: '38 / 36'}}
-      aspectRatio={{base: `1 / 1`, lg: '387  / 490'}}
+      aspectRatio={{base: `1 / 1`, lg: '397  / 490'}}
       bg="card_bg"
       mx={'auto'}
       h={{base: '350px', lg: `490`}}
@@ -87,6 +87,7 @@ export const CardThree = ({
           py="8px"
           borderRadius={'4px'}
           bg="primary"
+          h={`max-content`}
         >
           <Text className="gilda-display-regular" fontSize={'12px'} color="#191919">
             FRACTIONAL
@@ -107,7 +108,7 @@ export const CardThree = ({
             color="white"
             className="gilda-display-regular"
             fontWeight={400}
-            fontSize={{base: '19px', lg: '32px'}}
+            fontSize={{base: '19px', lg: '24px'}}
           >
             {title}
           </Text>
@@ -119,7 +120,7 @@ export const CardThree = ({
         <Text
           color="white"
           fontWeight={400}
-          fontSize={{base: '18px', lg: '32px'}}
+          fontSize={{base: '18px', lg: '24px'}}
           className="gilda-display-regular"
         >
           {subtitle || (

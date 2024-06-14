@@ -47,12 +47,7 @@ const SummaryDrawer = ({asset, setType, customScrollbarStyles}) => {
           >
             {asset?.payment_plan ? 'Initial Deposit' : 'Offer Price'}
           </Text>
-          <Text
-            color="text"
-            fontSize={{base: '28px', md: '34px'}}
-            fontWeight={500}
-            className="gilda-display-regular"
-          >
+          <Text color="#4B4B4B" fontSize={{base: '28px', md: '34px'}} fontWeight={600}>
             {asset?.payment_plan
               ? formatToCurrency(asset?.payment_plan?.initial_deposit_in_value)
               : formatToCurrency(asset?.total_unit_price)}

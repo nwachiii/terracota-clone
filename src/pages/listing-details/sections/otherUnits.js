@@ -37,7 +37,7 @@ const OtherUnits = ({info, excludingId}) => {
               p={`16px 12px`}
               gap={`12px`}
               border={`1px solid`}
-              borderColor={`matador_border_color.100`}
+              borderColor={`matador_text.500`}
               onClick={() =>
                 router.push({
                   pathname: `/listing-details/units/${id}`,
@@ -85,10 +85,7 @@ const OtherUnits = ({info, excludingId}) => {
           <Hide below="md">
             <CardTwo
               key={id}
-              price={price}
-              isFraction={is_fraction_sale_available}
-              size={unit_size}
-              unitLeft={total_quantity - total_purchased_units}
+              is_fraction_sale_available={is_fraction_sale_available}
               title={unit_title}
               image={photos[0]?.photo}
               subtitle={formatToCurrency(price)}
@@ -121,16 +118,16 @@ const OtherUnits = ({info, excludingId}) => {
           <Text
             fontSize={{base: '16px', lg: '24px'}}
             fontWeight={400}
-            color="text"
+            color="matador_text.100"
             className="gilda-display-bold"
           >
             People also viewed
           </Text>
           <Box
-            w="70px"
-            mt="15px"
-            borderBottom="1.8px solid #191919"
-            mb={{base: '10px', lg: '36px'}}
+            w={{base: `43px`, md: '70px'}}
+            mt="4px"
+            borderBottom="1.8px solid"
+            borderColor={`matador_text.200` || `#191919`}
           />
 
           {isLoading ? (

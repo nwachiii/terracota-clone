@@ -124,6 +124,7 @@ const FractionalDetailsMobile = ({setStep}) => {
               color="white"
               bg={'primary'}
               zIndex="100"
+              isDisabled={leftFractions <= 0}
               onClick={fractionalModal.onOpen}
             >
               Buy Fraction

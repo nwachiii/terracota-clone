@@ -12,7 +12,6 @@ const BuyProperties = ({unitData}) => {
       <Button
         bg="primary"
         color="white"
-        border="1px solid"
         width={{base: 'full', lg: '255px'}}
         h="56px"
         leftIcon={<img src={buyProperty.src} size={25} />}

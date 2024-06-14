@@ -86,7 +86,7 @@ const PaymentPlanTransaction = ({displayTab, equityInfo}) => {
       sx={customScrollbarStyles()}
       overflowY="auto"
       scrollBehavior="smooth"
-      maxH={{base: 'full', xl: '500.5px'}}
+      maxH={{base: 'full', xl: '460px'}}
       maxW={{base: 'full', xl: '608.81px'}}
       w={{base: 'full', xl: 'full'}}
       h="fit-content"

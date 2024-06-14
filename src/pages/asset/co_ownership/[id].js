@@ -44,6 +44,10 @@ import packetIcon from '/src/images/icons/homeOwnersPacketIcon.svg';
 import feedbackIcon from '/src/images/icons/feedbackIcon.svg';
 import {Spinner} from '../../../ui-lib';
 
+const absoluteStyle = {
+  top: '20vh',
+};
+
 const Coownership = () => {
   const {query} = useRouter();
   const [displayTab, setDisplayTab] = useState('transaction');
@@ -64,10 +68,6 @@ const Coownership = () => {
 
   const OVERVIEWINFO = [
     {
-      label: 'Property Type',
-      value: info?.project?.building_type ?? '-',
-    },
-    {
       label: 'Land Title',
       value: info?.project?.land_title ?? '-',
     },
@@ -76,7 +76,7 @@ const Coownership = () => {
       value: info?.project?.status ?? '-',
     },
     {
-      label: 'Building size',
+      label: 'Unit size',
       value: `${info?.project?.land_size ?? '-'} sqm`,
     },
     ...(info?.owner?.id === user?.user?.id
@@ -96,6 +96,7 @@ const Coownership = () => {
       display: 'none',
     },
   };
+
   return (
     <>
       <LayoutView spacing="0px" navBarStyle={navBarStyle} noPadding>
@@ -103,7 +104,7 @@ const Coownership = () => {
           {isError ? (
             <ErrorState />
           ) : isLoading || !info ? (
-            <Spinner color="#DDB057" />
+            <Spinner absoluteStyle={absoluteStyle} color="#DDB057" />
           ) : (
             <>
               <AssetHeader
@@ -125,7 +126,7 @@ const Coownership = () => {
                   overviewInfo={OVERVIEWINFO}
                   spacing={{base: '24px', xl: '23.5px'}}
                   p={{xl: '23.5px'}}
-                  maxH={{base: 'full', xl: '500.5px'}}
+                  maxH={{base: 'full', xl: '460px'}}
                   maxW={{base: 'full', xl: '626.856px'}}
                   w={{base: 'full', xl: 'full'}}
                   display={{
@@ -257,4 +258,4 @@ const Coownership = () => {
   );
 };
 
-export default Auth(Coownership, {color: '#DDB057'});
+export default Auth(Coownership, {color: '#DDB057', absoluteStyle});

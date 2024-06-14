@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Flex, HStack, Text, VStack} from '@chakra-ui/react';
+import {Box, Center, Flex, HStack, Text, VStack} from '@chakra-ui/react';
 import LayoutView from '../../../components/layout';
 import {Spinner} from '../../../ui-lib';
 import {useRouter} from 'next/router';
@@ -47,7 +47,9 @@ const Unit = () => {
       <Mobile />
       <LayoutView display={{base: 'none', lg: 'flex'}}>
         {isLoading ? (
-          <Spinner />
+          <Center minH={`70vh`}>
+            <Spinner noAbsolute />
+          </Center>
         ) : isError ? (
           <ErrorState />
         ) : (

@@ -16,6 +16,7 @@ import {
 } from '@chakra-ui/react';
 import {BsArrowLeft} from 'react-icons/bs';
 import isMobile from '../../../utils/extras';
+import {ChevronLeftIcon, CloseIcon} from '@chakra-ui/icons';
 
 const PendingTransactions = ({assetData, drawer, isError, isLoading}) => {
   const [type, setType] = useState('list');
@@ -61,36 +62,44 @@ const PendingTransactions = ({assetData, drawer, isError, isLoading}) => {
         w="full"
         minH="20vh"
         h={'fit-content'}
-        p="16px"
         maxW={'500px'}
-        maxH={'711px'}
         bg="#FBFCFC"
         px="0"
+        position={'relative'}
       >
-        <Box px="24px" pt={'8px'} mb="38px">
+        <Box
+          px="14px"
+          py={'18px'}
+          mb="38px"
+          position={'absolute'}
+          top="0"
+          bg="white"
+          right={0}
+          w="full"
+          zIndex={200}
+        >
           <Flex w="full" h="20px" justify={'space-between'} align={'center'}>
             {type === 'list' ? (
               <Text
                 color="text"
                 fontSize={'23px'}
-                fontWeight={600}
+                fontWeight={400}
                 className="gilda-display-regular"
               >
                 Offers
               </Text>
             ) : type === 'payment_plan' ? (
               <HStack align={'center'}>
-                <Icon
-                  color={'text'}
-                  as={BsArrowLeft}
-                  fontSize={'25px'}
-                  style={{cursor: 'pointer'}}
+                <ChevronLeftIcon
+                  cursor={'pointer'}
                   onClick={() => setType('list')}
+                  fontSize={'35px'}
+                  color={'text'}
                 />
                 <Text
                   color="text"
                   fontSize={'23px'}
-                  fontWeight={600}
+                  fontWeight={400}
                   className="gilda-display-regular"
                 >
                   Summary
@@ -98,17 +107,16 @@ const PendingTransactions = ({assetData, drawer, isError, isLoading}) => {
               </HStack>
             ) : type === 'breakdown' ? (
               <HStack align={'center'}>
-                <Icon
-                  color={'text'}
-                  as={BsArrowLeft}
-                  fontSize={'25px'}
-                  style={{cursor: 'pointer'}}
+                <ChevronLeftIcon
+                  cursor={'pointer'}
                   onClick={() => setType('payment_plan')}
+                  fontSize={'35px'}
+                  color={'text'}
                 />
                 <Text
                   color="text"
                   fontSize={'23px'}
-                  fontWeight={600}
+                  fontWeight={400}
                   className="gilda-display-regular"
                 >
                   Payment Breakdown
@@ -116,91 +124,91 @@ const PendingTransactions = ({assetData, drawer, isError, isLoading}) => {
               </HStack>
             ) : (
               <HStack align={'center'}>
-                <Icon
-                  color={'text'}
-                  as={BsArrowLeft}
-                  fontSize={'25px'}
-                  style={{cursor: 'pointer'}}
+                <ChevronLeftIcon
+                  cursor={'pointer'}
                   onClick={() => setType('payment_plan')}
+                  fontSize={'35px'}
+                  color={'text'}
                 />
                 <Text
                   color="text"
                   fontSize={'23px'}
-                  fontWeight={600}
+                  fontWeight={400}
                   className="gilda-display-regular"
                 >
                   Payment
                 </Text>
               </HStack>
             )}
-            <Icon
+            <CloseIcon
+              cursor={'pointer'}
+              fontSize={'14px'}
               color="text"
-              as={RxCross1}
-              style={{cursor: 'pointer'}}
-              fontSize={'22px'}
               onClick={drawer?.onClose}
             />
           </Flex>
         </Box>
         {/* <Box w="full" borderBottom="1px solid" mb="21px" mt={'14px'} borderColor="shade" /> */}
 
-        {type === 'list' ? (
-          <TransactionsList
-            assetData={assetData}
-            drawer={drawer}
-            isError={isError}
-            isLoading={isLoading}
-            type={type}
-            setType={setType}
-            asset={asset}
-            setAsset={setAsset}
-            customScrollbarStyles={customScrollbarStyles}
-            setAmountToPay={setAmountToPay}
-            amountToPay={amountToPay}
-          />
-        ) : type === 'payment_plan' ? (
-          <SummaryDrawer
-            assetData={assetData}
-            drawer={drawer}
-            isError={isError}
-            isLoading={isLoading}
-            type={type}
-            setType={setType}
-            asset={asset}
-            setAsset={setAsset}
-            customScrollbarStyles={customScrollbarStyles}
-            setAmountToPay={setAmountToPay}
-            amountToPay={amountToPay}
-          />
-        ) : type === 'breakdown' ? (
-          <Breakdown
-            assetData={assetData}
-            drawer={drawer}
-            isError={isError}
-            isLoading={isLoading}
-            type={type}
-            setType={setType}
-            asset={asset}
-            setAsset={setAsset}
-            customScrollbarStyles={customScrollbarStyles}
-            setAmountToPay={setAmountToPay}
-            amountToPay={amountToPay}
-          />
-        ) : (
-          <PaymwntDrawer
-            assetData={assetData}
-            drawer={drawer}
-            isError={isError}
-            isLoading={isLoading}
-            type={type}
-            setType={setType}
-            asset={asset}
-            setAsset={setAsset}
-            customScrollbarStyles={customScrollbarStyles}
-            setAmountToPay={setAmountToPay}
-            amount={amountToPay}
-          />
-        )}
+        <Box minH="45vh" maxH="65vh" pt="68px" w="full" h={'fit-content'} overflowY={'scroll'}>
+          {type === 'list' ? (
+            <TransactionsList
+              assetData={assetData}
+              drawer={drawer}
+              isError={isError}
+              isLoading={isLoading}
+              type={type}
+              setType={setType}
+              asset={asset}
+              setAsset={setAsset}
+              customScrollbarStyles={customScrollbarStyles}
+              setAmountToPay={setAmountToPay}
+              amountToPay={amountToPay}
+            />
+          ) : type === 'payment_plan' ? (
+            <SummaryDrawer
+              assetData={assetData}
+              drawer={drawer}
+              isError={isError}
+              isLoading={isLoading}
+              type={type}
+              setType={setType}
+              asset={asset}
+              setAsset={setAsset}
+              customScrollbarStyles={customScrollbarStyles}
+              setAmountToPay={setAmountToPay}
+              amountToPay={amountToPay}
+            />
+          ) : type === 'breakdown' ? (
+            <Breakdown
+              assetData={assetData}
+              drawer={drawer}
+              isError={isError}
+              isLoading={isLoading}
+              type={type}
+              setType={setType}
+              asset={asset}
+              setAsset={setAsset}
+              customScrollbarStyles={customScrollbarStyles}
+              setAmountToPay={setAmountToPay}
+              amountToPay={amountToPay}
+            />
+          ) : (
+            <PaymwntDrawer
+              assetData={assetData}
+              drawer={drawer}
+              isError={isError}
+              isLoading={isLoading}
+              type={type}
+              setType={setType}
+              asset={asset}
+              setAsset={setAsset}
+              customScrollbarStyles={customScrollbarStyles}
+              setAmountToPay={setAmountToPay}
+              amount={amountToPay}
+            />
+          )}
+        </Box>
       </DrawerContent>
     </Drawer>
   );

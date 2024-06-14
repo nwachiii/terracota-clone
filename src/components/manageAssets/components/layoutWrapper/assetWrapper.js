@@ -10,7 +10,12 @@ const AssetWrapper = ({children}) => {
 
   return (
     <>
-      <Stack w="full" spacing={{base: '13px', xl: '0px'}} py={{base: '16px', xl: '21.88px'}}>
+      <Stack
+        w="full"
+        spacing={{base: '13px', xl: '0px'}}
+        py={{base: '16px', xl: '21.88px'}}
+        // pb={{base: '47px', xl: '59.5px'}}
+      >
         {/* <Hide above="lg"> */}{' '}
         <HStack px="20px" display={{base: 'flex', xl: 'none'}} justify="space-between">
           <HStack

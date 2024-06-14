@@ -103,7 +103,7 @@ const TransactionInfo = ({equityInfo, transactionInfo}) => {
                 <Text
                   textTransform="capitalize"
                   color="#4B4B4B"
-                  fontSize={{md: '10.347px', base: '9px'}}
+                  fontSize={{md: '10px', base: '9px'}}
                   fontWeight="400"
                 >
                   Due Date
@@ -111,7 +111,7 @@ const TransactionInfo = ({equityInfo, transactionInfo}) => {
 
                 <HoverText
                   text={transactionInfo.due_date}
-                  fontSize={{md: '10.347px', base: '9px'}}
+                  fontSize={{md: '11px', base: '9px'}}
                   fontWeight={{base: '700', md: '400'}}
                   color="#000"
                 />
@@ -130,13 +130,13 @@ const TransactionInfo = ({equityInfo, transactionInfo}) => {
                 <Text
                   textTransform="capitalize"
                   color="#4B4B4B"
-                  fontSize={{md: '10.347px', base: '9px'}}
+                  fontSize={{md: '10px', base: '9px'}}
                   fontWeight="400"
                 >
                   Outstanding Balance
                 </Text>
                 <Text
-                  fontSize={{md: '16px', base: '10px'}}
+                  fontSize={{md: '14px', base: '10px'}}
                   fontWeight={{base: '700', md: '400'}}
                   color="#000"
                 >

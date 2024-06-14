@@ -484,10 +484,10 @@ const MakeDepositModal = ({depositModal, info}) => {
                 justify={'center'}
                 direction="column"
               >
-                <Text color="primary" fontSize={{base: '14px', md: '18px'}} fontWeight={400}>
+                <Text color="text" fontSize={{base: '14px', md: '18px'}} fontWeight={400}>
                   You will Pay
                 </Text>
-                <Text color="primary" fontSize={{base: '28px', md: '34px'}} fontWeight={500}>
+                <Text color="#4B4B4B" fontSize={{base: '28px', md: '34px'}} fontWeight={500}>
                   {calculateFee(amount)}
                 </Text>
               </Flex>

@@ -15,7 +15,7 @@ import Dispute from './dispute';
 import {BsArrowLeft} from 'react-icons/bs';
 import isMobile from '../../../utils/extras';
 import AssetsList from './assetsList';
-import {CloseIcon} from '@chakra-ui/icons';
+import {ChevronLeftIcon, CloseIcon} from '@chakra-ui/icons';
 
 const PendingTransactions = ({equitiesData, drawer, refetch, isLoading}) => {
   const [type, setType] = useState('list');
@@ -65,27 +65,35 @@ const PendingTransactions = ({equitiesData, drawer, refetch, isLoading}) => {
         w="full"
         minH="20vh"
         h={'fit-content'}
-        p="16px"
         maxW={'500px'}
-        maxH={'821px'}
         bg="#FBFCFC"
         px="0"
+        position={'relative'}
       >
-        <Box px="24px" pt={'8px'} mb="38px">
+        <Box
+          px="14px"
+          py={'18px'}
+          mb="38px"
+          position={'absolute'}
+          top="0"
+          bg="white"
+          right={0}
+          w="full"
+          zIndex={200}
+        >
           <Flex w="full" h="20px" justify={'space-between'} align={'center'}>
             {type === 'dispute' || type === 'validate' ? (
               <HStack align={'center'}>
-                <Icon
-                  color="text"
-                  as={BsArrowLeft}
-                  fontSize={'25px'}
-                  style={{cursor: 'pointer'}}
+                <ChevronLeftIcon
+                  cursor={'pointer'}
                   onClick={() => setType('summary')}
+                  fontSize={'35px'}
+                  color={'text'}
                 />
                 <Text
                   color="text"
                   fontSize={'23px'}
-                  fontWeight={600}
+                  fontWeight={400}
                   className="gilda-display-regular"
                 >
                   Dispute
@@ -93,17 +101,16 @@ const PendingTransactions = ({equitiesData, drawer, refetch, isLoading}) => {
               </HStack>
             ) : type === 'summary' ? (
               <HStack align={'center'}>
-                <Icon
-                  color="text"
-                  as={BsArrowLeft}
-                  fontSize={'25px'}
-                  style={{cursor: 'pointer'}}
+                <ChevronLeftIcon
+                  cursor={'pointer'}
                   onClick={() => setType('list')}
+                  fontSize={'35px'}
+                  color={'text'}
                 />
                 <Text
                   color="text"
                   fontSize={'23px'}
-                  fontWeight={600}
+                  fontWeight={400}
                   className="gilda-display-regular"
                 >
                   Validate Transaction
@@ -113,56 +120,58 @@ const PendingTransactions = ({equitiesData, drawer, refetch, isLoading}) => {
               <Text
                 color="text"
                 fontSize={'23px'}
-                fontWeight={600}
+                fontWeight={400}
                 className="gilda-display-regular"
               >
                 Validate Transaction
               </Text>
             )}
             <CloseIcon
+              cursor={'pointer'}
+              fontSize={'14px'}
               color="text"
-              style={{cursor: 'pointer'}}
-              fontSize={'18px'}
               onClick={drawer?.onClose}
             />
           </Flex>
         </Box>
         {/* <Box w="full" borderBottom="1px solid" borderColor={'shade'} mb="21px" mt={'14px'} /> */}
 
-        {type === 'summary' ? (
-          <Summary
-            equityData={equityData}
-            setType={setType}
-            customScrollbarStyles={customScrollbarStyles}
-          />
-        ) : type === 'validate' ? (
-          <ConfirmValidate
-            refetch={refetch}
-            validation_requestsId={validation_requestsId}
-            equityData={equityData}
-            setType={setType}
-            customScrollbarStyles={customScrollbarStyles}
-          />
-        ) : type === 'dispute' ? (
-          <Dispute
-            drawer={drawer}
-            validation_requestsId={validation_requestsId}
-            equityData={equityData}
-            setType={setType}
-            customScrollbarStyles={customScrollbarStyles}
-          />
-        ) : (
-          <AssetsList
-            equitiesData={equitiesData}
-            equityData={equityData}
-            setEquityData={setEquityData}
-            isLoading={isLoading}
-            drawer={drawer}
-            validation_requestsId={validation_requestsId}
-            setType={setType}
-            customScrollbarStyles={customScrollbarStyles}
-          />
-        )}
+        <Box minH="45vh" maxH="65vh" pt="68px" w="full" h={'fit-content'} overflowY={'scroll'}>
+          {type === 'summary' ? (
+            <Summary
+              equityData={equityData}
+              setType={setType}
+              customScrollbarStyles={customScrollbarStyles}
+            />
+          ) : type === 'validate' ? (
+            <ConfirmValidate
+              refetch={refetch}
+              validation_requestsId={validation_requestsId}
+              equityData={equityData}
+              setType={setType}
+              customScrollbarStyles={customScrollbarStyles}
+            />
+          ) : type === 'dispute' ? (
+            <Dispute
+              drawer={drawer}
+              validation_requestsId={validation_requestsId}
+              equityData={equityData}
+              setType={setType}
+              customScrollbarStyles={customScrollbarStyles}
+            />
+          ) : (
+            <AssetsList
+              equitiesData={equitiesData}
+              equityData={equityData}
+              setEquityData={setEquityData}
+              isLoading={isLoading}
+              drawer={drawer}
+              validation_requestsId={validation_requestsId}
+              setType={setType}
+              customScrollbarStyles={customScrollbarStyles}
+            />
+          )}
+        </Box>
       </DrawerContent>
     </Drawer>
   );

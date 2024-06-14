@@ -68,10 +68,10 @@ const Plan = ({
       ) : (
         <Carousel
           ref={carouselRef}
-          initialActiveIndex={3}
           breakPoints={breakPoint}
           pagination={false}
           verticalMode
+          // isRTL
           showArrows={false}
         >
           {PAYMENT_PLAN_DATA?.map((item, i) => (

@@ -48,7 +48,13 @@ function MyApp({Component, pageProps}) {
     // if (my_preferred_theme) {
     //   setTheme(my_preferred_theme);
     // } else {
-    setItemInLS(MY_PREFERRED_THEME, 'light');
+
+    const default_theme = getItemFromLS(MY_PREFERRED_THEME);
+    if (default_theme) {
+      changeTheme(default_theme);
+    } else {
+      setItemInLS(MY_PREFERRED_THEME, 'light');
+    }
     // }
   }, []);
 

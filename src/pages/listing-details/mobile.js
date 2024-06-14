@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Flex, HStack, Image, Text, VStack} from '@chakra-ui/react';
+import {Box, Center, Flex, HStack, Image, Text, VStack} from '@chakra-ui/react';
 import {Spinner} from '../../ui-lib';
 import {useRouter} from 'next/router';
 import {fetchProjectDocument, fetchProjectsById} from '../../api/listing';
@@ -49,7 +49,9 @@ const ListingDetailsMobile = () => {
         display={{base: 'block', lg: 'none'}}
       >
         {isLoading ? (
-          <Spinner />
+          <Center minH={`70vh`}>
+            <Spinner noAbsolute />
+          </Center>
         ) : isError ? (
           <ErrorState />
         ) : (

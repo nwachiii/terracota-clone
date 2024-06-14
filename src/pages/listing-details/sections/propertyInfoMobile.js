@@ -19,6 +19,7 @@ const PropertyInfoMobile = ({info}) => {
 
   return (
     <Box>
+      {console.log('info', info)}
       {info.is_fractionalized ? (
         <Box
           w="full"

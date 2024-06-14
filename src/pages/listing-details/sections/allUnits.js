@@ -30,11 +30,7 @@ const AllUnits = ({info}) => {
       }) => (
         <CardTwo
           key={id}
-          price={price}
-          size={unit_size}
-          isFraction={is_fraction_sale_available}
           is_fraction_sale_available={is_fraction_sale_available}
-          unitLeft={total_quantity - total_purchased_units}
           image={photos[0]?.photo}
           title={unit_title}
           subtitle={formatToCurrency(price)}

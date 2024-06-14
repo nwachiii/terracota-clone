@@ -1,4 +1,4 @@
-import {Flex, Image, Text, HStack, useDisclosure, Box, Icon} from '@chakra-ui/react';
+import {Flex, Image, Text, HStack, useDisclosure, Box, Icon, Center} from '@chakra-ui/react';
 import Link from 'next/link';
 import logoWhite from '../../images/logo-white.svg';
 import logo from '../../images/logo.svg';
@@ -22,6 +22,7 @@ import {ChevronLeftIcon} from '@chakra-ui/icons';
 import {BiMenu} from 'react-icons/bi';
 import {LoggedinUser} from '../../constants/routes';
 import {RiBuilding4Fill} from 'react-icons/ri';
+import {storeDetails} from '../../api/auth';
 
 const Navbar = ({transluscent, isLandingPage, navBarStyle, activePage}) => {
   const settingsQuery = useQuery(
@@ -33,6 +34,8 @@ const Navbar = ({transluscent, isLandingPage, navBarStyle, activePage}) => {
   );
   const avatar = settingsQuery?.data?.data?.data?.avatar;
   const TERMS = useQuery(['AgentsTerms'], fetchAgentTerms, {enabled: !!LoggedinUser});
+  const STOREINFO = useQuery(['storeInfo'], storeDetails);
+  const store_data = STOREINFO.data?.data?.data;
 
   const useLightItems = appCurrentTheme !== LIGHT || (appCurrentTheme === LIGHT && transluscent);
 
@@ -76,13 +79,14 @@ const Navbar = ({transluscent, isLandingPage, navBarStyle, activePage}) => {
           display={{base: 'none', lg: 'flex'}}
           color="text"
           mr="auto"
-          h={'100px'}
+          // h={'100px'}
           alignItems={'center'}
           justify={'space-between'}
           w="full"
           bg={transluscent ? 'rgba(0, 0, 0, 0.5)' : 'card_bg'}
           position={transluscent && 'absolute'}
-          px={'48px'}
+          px={'100px'}
+          py={`24px`}
           zIndex={100}
           {...navBarStyle?.desktop}
         >
@@ -99,43 +103,50 @@ const Navbar = ({transluscent, isLandingPage, navBarStyle, activePage}) => {
             </Center> */}
 
             <HStack gap={'20px'}>
-              <RiBuilding4Fill fontSize={`48px`} />
-              <Text
+              {store_data?.company_image ? (
+                <Center w="48px" h="48px" minWidth={`48px`} maxWidth={`48px`} position={`relative`}>
+                  <Image
+                    src={store_data?.company_image}
+                    alt={'Company Image'}
+                    w="100%"
+                    height="100%"
+                    minWidth={`100%`}
+                    minHeight={`100%`}
+                  />
+                </Center>
+              ) : (
+                <RiBuilding4Fill fontSize={`48px`} />
+              )}
+              {/* <Text
                 fontSize={`20px`}
                 textTransform={`uppercase`}
                 className="gilda-display-regular"
                 fontWeight={500}
               >
-                Your Logo
-              </Text>
+                {store_data?.business_name || `Your Logo`}
+              </Text> */}
             </HStack>
           </Link>
           {LoggedinUser && (
             <>
               <Flex justify="center" align="center" gap={'45px'}>
-                <Flex gap="49px">
-                  <Flex align={'center'} justify={'center'}>
-                    {auth_data.map(item => (
-                      <Text
-                        ml="25px"
-                        className="gilda-display-regular"
-                        key={item.key}
-                        pb="8px"
-                        cursor="pointer"
-                        onClick={item.onClick}
-                        fontSize="14px"
-                        textTransform={'uppercase'}
-                        fontWeight={400}
-                        whileHover={{scale: 1.1}}
-                        whileTap={{scale: 0.9}}
-                        color={
-                          useLightItems ? colors_object.darkBlue.text : colors_object.light.text
-                        }
-                      >
-                        {item.title}
-                      </Text>
-                    ))}
-                  </Flex>
+                <Flex align={'center'} justify={'center'} gap={`42px`}>
+                  {auth_data.map(item => (
+                    <Text
+                      className="gilda-display-regular"
+                      key={item.key}
+                      cursor="pointer"
+                      onClick={item.onClick}
+                      fontSize="14px"
+                      textTransform={'capitalize'}
+                      fontWeight={400}
+                      whileHover={{scale: 1.1}}
+                      whileTap={{scale: 0.9}}
+                      color={useLightItems ? colors_object.darkBlue.text : colors_object.light.text}
+                    >
+                      {item.title}
+                    </Text>
+                  ))}
                 </Flex>
 
                 <ProfileMenu
@@ -176,7 +187,7 @@ const Navbar = ({transluscent, isLandingPage, navBarStyle, activePage}) => {
           )}
         </Flex>
       )}
-      <Box {...navBarStyle?.mobile} display={{base: 'flex', lg: 'none'}}>
+      <Box display={{base: 'flex', lg: 'none'}} {...navBarStyle?.mobile}>
         <Flex
           position={transluscent && 'absolute'}
           px={'20px'}

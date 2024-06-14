@@ -60,7 +60,6 @@ export const Wallet = ({ isWalOpen, onWalClose, avatar, onDrawerOpen }) => {
         {page === "withdrawal" && (
           <WithdrawalWallet setPage={setPage} onWalClose={onWalClose} />
         )}
-      {!isNotMobile && <Footer/>}
       </DrawerContent>
     </Drawer>
   );

@@ -53,7 +53,7 @@ const Amenities = ({info}) => {
             justify={'flex-start'}
           >
             <Image
-              boxSize={{base: '20px', lg: '50px'}}
+              boxSize={{base: '20px', lg: '48px'}}
               alt="next_image"
               src={getIcon(amen.name)}
               // filter={appCurrentTheme !== LIGHT ? `invert(1)` : ``}

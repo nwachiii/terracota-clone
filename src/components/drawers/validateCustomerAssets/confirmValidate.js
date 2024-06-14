@@ -89,7 +89,7 @@ const ConfirmValidate = ({validation_requestsId, refetch, setType, customScrollb
             h="49px"
             w="50%"
             color="primary"
-            onClick={() => setType('outright')}
+            onClick={() => setType('summary')}
           >
             No, Go back
           </CustomizableButton>
