@@ -51,7 +51,7 @@ const AllUnits = ({info}) => {
 				<SimpleGrid mt={{base: '15px', md: '26px'}} gap={{base: '16px', md: '24px', '2xl': '54px'}} columns={{base: 1, md: 2, lg: 3}} justify={'center'} alignItems={'center'}>
 					{data?.data?.results?.map((item, idx) => (
 						<CardTwo
-							key={idx}
+							key={item?.id}
 							price={item?.price}
 							size={item?.unit_size}
 							isFraction={item?.is_fraction_sale_available}
@@ -62,7 +62,7 @@ const AllUnits = ({info}) => {
 							subtitle={formatToCurrency(item?.price)}
 							onClickCard={() =>
 								router.push({
-									pathname: `/listing-details/units/${id}`,
+									pathname: `/listing-details/units/${item?.id}`,
 									query: {projectId: projectId},
 								})
 							}
