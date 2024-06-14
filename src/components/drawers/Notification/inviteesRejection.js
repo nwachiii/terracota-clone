@@ -7,7 +7,7 @@ import processingLoader from '../../../images/processing-transaction.gif'
 import successfulLoader from '../../../images/successful-transaction.gif'
 
 
-const InviteRejection = ({ mutation, setType, onNotClose, customScrollbarStyles, handleReject }) => {
+export const InviteRejection = ({ mutation, setType, onNotClose, customScrollbarStyles, handleReject }) => {
   const [message, setMessage] = useState('')
 
   const handleSubmit = () => {
