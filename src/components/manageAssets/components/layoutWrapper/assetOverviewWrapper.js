@@ -22,7 +22,7 @@ const AssetOverviewWrapper = ({overviewInfo, children, ...rest}) => {
 
 			{overviewInfo.map((info, idx) => {
 				return (
-					<HStack key={idx} justify='space-between' w='full' my={4}>
+					<HStack key={idx} justify='space-between' w='full' mb={4}>
 						<Text fontSize={{base: '12px', md: '13.664px'}} lineHeight={{base: '14px', md: '17px'}} fontWeight='400' color='#606060'>
 							{info.label}
 						</Text>
