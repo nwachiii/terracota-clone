@@ -95,7 +95,7 @@ const PropertyInfo = ({info, allUnitsRef}) => {
               fontWeight="500"
             >
               <HStack>
-                <Text fontSize={`13px`}>Buy Fraction</Text>
+                <Text fontSize={`13px`}>Own a Fraction</Text>
               </HStack>
             </Button>
             <HStack gap="12px" flex={`1`}>
