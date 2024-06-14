@@ -166,7 +166,7 @@ const UploadImages = props => {
           {isDragActive ? (
             <p>Drop the files here ...</p>
           ) : (
-            <Stack spacing="8px" align="center">
+            <Stack spacing="8px" align="center" mt={'0 !important'}>
               <Image src={uploadIcon.src} alt="upload icon" boxSize="19.4px" />
               <Text w="full" textAlign="center" fontSize="8px" fontWeight="400" color="text">
                 Upload image

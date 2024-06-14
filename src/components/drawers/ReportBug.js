@@ -23,7 +23,7 @@ import {scrollBarStyles} from '../common/ScrollBarStyles';
 import UploadImages from './uploadImages';
 import MobileHeader from '../navbar/mobileHeader';
 
-const ReportBug = ({reportBugModal, onDrawerOpen}) => {
+export const ReportBug = ({reportBugModal, onDrawerOpen}) => {
   const [message, setMessage] = useState('');
   const toast = useToast();
   const [document, setDocument] = useState([]);
@@ -86,26 +86,20 @@ const ReportBug = ({reportBugModal, onDrawerOpen}) => {
         right={{base: '0', md: '24px !important'}}
         w="full"
         h={'full'}
-        p="16px"
         px={0}
         maxW={{base: '100vw', md: '500px'}}
         maxH={'515px'}
         bg={{base: '#FFF', md: '#FBFCFC'}}
         boxShadow={{base: 'none', md: 'md'}}
+        py={{base: 0, md: '16px'}}
       >
-        <Box pt="20px">
-          <Box p={4} borderBottom="1px solid #E4E4E4">
+        <Box pt="10px">
+          <Box p='25px' borderBottom="1px solid #E4E4E4">
             <Box>
               <Flex direction="row" justify="space-between" align={'center'}>
-                <Stack>
-                  <Text className="gilda-display-regular" color={'text'} fontSize={'24px'}>
-                    Report a Bug
-                  </Text>
-                  <Text fontSize={{base: '13px', md: '16px'}} fontWeight={400} color="text">
-                    Encountered a bug? Let us know! Our team will investigate and work to resolve
-                    the issue ASAP.
-                  </Text>
-                </Stack>
+                <Text className="gilda-display-regular" color={'text'} fontSize={'24px'}>
+                  Report a Bug
+                </Text>
                 <CloseIcon
                   color={'text'}
                   cursor="pointer"
@@ -113,6 +107,16 @@ const ReportBug = ({reportBugModal, onDrawerOpen}) => {
                   onClick={reportBugModal?.onClose}
                 />
               </Flex>
+              <Text
+                fontFamily="Roboto"
+                fontSize={{base: '13px', md: '16px'}}
+                fontWeight={400}
+                color="text"
+                pt='4px'
+              >
+                Encountered a bug? Let us know! Our team will investigate and work to resolve the
+                issue ASAP.
+              </Text>
             </Box>
           </Box>
 
@@ -184,7 +188,7 @@ const ReportBug = ({reportBugModal, onDrawerOpen}) => {
                   border="0.3px solid #747474"
                   borderRadius={'5px'}
                   w="full"
-                  bg='rgba(217, 217, 217, 0.10)'
+                  bg="rgba(217, 217, 217, 0.10)"
                   h="105px"
                 />
 

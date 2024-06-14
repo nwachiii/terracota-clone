@@ -25,52 +25,6 @@ const PropertyInfo = ({info, allUnitsRef}) => {
     <Box>
       {info.is_fractionalized ? (
         <Box w="full" mt="48px">
-          {/* <Flex direction="row" alignItems={'center'} gap="8px">
-            <CustomizableButton
-              w="33%"
-              py="25px"
-              px="15px"
-              bg="white"
-              color="black"
-              leftIcon={<Image src={brochure.src} fontSize={20} />}
-              border="0.5px solid"
-              _focus={{border: '0.5px solid !important'}}
-              fontWeight="500"
-              onClick={() =>
-                window.open(`${projectDoc.data?.data?.results?.[0]?.document_url || ''}`, '_blank')
-              }
-            >
-              View Brochure
-            </CustomizableButton>
-            <CustomizableButton
-              w="33%"
-              py="25px"
-              px="15px"
-              bg="white"
-              color="black"
-              border="0.5px solid"
-              _focus={{border: '0.5px solid !important'}}
-              leftIcon={<Image alt="next_image" src={callOutgoing.src} />}
-              onClick={contactModal.onOpen}
-              fontWeight="500"
-            >
-              Contact Person
-            </CustomizableButton>
-            <CustomizableButton
-              w="33%"
-              py="25px"
-              px="15px"
-              bg="white"
-              color="black"
-              border="0.5px solid"
-              _focus={{border: '0.5px solid !important'}}
-              leftIcon={<Image src={calendarBlack.src} fontSize="20" />}
-              onClick={requestModal.onOpen}
-              fontWeight="500"
-            >
-              Request a tour
-            </CustomizableButton>
-          </Flex> */}
           <Flex
             direction="row"
             alignItems={'center'}
@@ -80,11 +34,13 @@ const PropertyInfo = ({info, allUnitsRef}) => {
           >
             <Button
               flex={`1`}
-              py="25px"
-              px="15px"
+              py="16px"
+              px="24px"
+              h={`100%`}
               // bg='primary'
               bg="primary"
               color="#fff"
+              borderRadius={`0px`}
               border="0.5px solid"
               borderColor={`primary`}
               _hover={{
@@ -95,114 +51,88 @@ const PropertyInfo = ({info, allUnitsRef}) => {
               fontWeight="500"
             >
               <HStack>
-                <Text fontSize={`13px`}>Own a Fraction</Text>
+                <Text fontSize={`16px`}>Buy Fraction</Text>
               </HStack>
             </Button>
             <HStack gap="12px" flex={`1`}>
               <Button
                 flex={`1`}
-                py="25px"
-                px="15px"
+                py="16px"
+                px="24px"
+                h={`100%`}
                 bg="transparent"
                 color="primary"
+                borderRadius={`0px`}
                 border="0.5px solid"
                 borderColor="primary"
+                _focus={{
+                  bg: 'transparent',
+                  border: '0.5px solid !important',
+                  borderColor: 'primary',
+                }}
                 _hover={{
                   bg: 'transparent',
+                  border: '0.5px solid !important',
+                  borderColor: 'primary ',
                 }}
                 leftIcon={<MdOutlineSignpost fontSize={`18px`} />}
                 onClick={requestModal.onOpen}
                 fontWeight="500"
               >
                 <HStack>
-                  <Text fontSize={`13px`}>Request Inspection</Text>
+                  <Text fontSize={`16px`}>Request Inspection</Text>
                 </HStack>
               </Button>
               <Button
                 flex={`1`}
-                py="25px"
-                px="15px"
+                py="16px"
+                px="24px"
+                h={`100%`}
                 // bg='primary'
                 bg="transparent"
                 color="primary"
+                borderRadius={`0px`}
                 border="0.5px solid"
                 borderColor="primary"
+                _focus={{
+                  bg: 'transparent',
+                  border: '0.5px solid !important',
+                  borderColor: 'primary',
+                }}
                 _hover={{
                   bg: 'transparent',
+                  border: '0.5px solid !important',
+                  borderColor: 'primary ',
                 }}
                 leftIcon={<BiPhoneCall color={'matador_text.100'} fontSize={`18px`} />}
                 onClick={contactModal.onOpen}
                 fontWeight="500"
               >
                 <HStack>
-                  <Text fontSize={`13px`}>Contact Person</Text>
+                  <Text fontSize={`16px`}>Contact Person</Text>
                 </HStack>
               </Button>
             </HStack>
           </Flex>
         </Box>
       ) : (
-        // <Flex mt="48px" direction="row" alignItems={'center'} gap="8px">
-        //   <CustomizableButton
-        //     w="33%"
-        //     py="25px"
-        //     px="15px"
-        //     bg="white"
-        //     color="black"
-        //     leftIcon={<Image src={brochure.src} fontSize={20} />}
-        //     border="0.5px solid"
-        //     _focus={{border: '0.5px solid !important'}}
-        //     fontWeight="500"
-        //     onClick={() =>
-        //       window.open(`${projectDoc.data?.data?.results?.[0]?.document_url || ''}`, '_blank')
-        //     }
-        //   >
-        //     View Brochure
-        //   </CustomizableButton>
-        //   <CustomizableButton
-        //     w="33%"
-        //     py="25px"
-        //     px="15px"
-        //     bg="white"
-        //     color="black"
-        //     border="0.5px solid"
-        //     _focus={{border: '0.5px solid !important'}}
-        //     leftIcon={<Image alt="next_image" src={callOutgoing.src} />}
-        //     onClick={contactModal.onOpen}
-        //     fontWeight="500"
-        //   >
-        //     Contact Person
-        //   </CustomizableButton>
-        //   <CustomizableButton
-        //     w="33%"
-        //     py="25px"
-        //     px="15px"
-        //     bg="black"
-        //     color="white"
-        //     border="0.5px solid"
-        //     _focus={{border: '0.5px solid !important'}}
-        //     leftIcon={<Image src={calendar.src} fontSize="20" />}
-        //     onClick={requestModal.onOpen}
-        //     fontWeight="500"
-        //   >
-        //     Request a tour
-        //   </CustomizableButton>
-        // </Flex>
         <Flex
           direction="row"
           alignItems={'center'}
-          gap="12px"
+          gap="24px"
           justify={'space-between'}
           className="montserrat-regular"
           mt={`24px`}
         >
           <Button
             flex={`1`}
-            py="25px"
-            px="15px"
+            py="16px"
+            px="24px"
+            h={`100%`}
             // bg='primary'
             bg="primary"
             color="#fff"
+            borderRadius={`0px`}
             border="none"
             _focus={{
               bg: 'primary',
@@ -215,27 +145,36 @@ const PropertyInfo = ({info, allUnitsRef}) => {
             fontWeight="500"
           >
             <HStack>
-              <Text fontSize={`13px`}>Request Inspection</Text>
+              <Text fontSize={`16px`}>Request Inspection</Text>
             </HStack>
           </Button>
           <Button
             flex={`1`}
-            py="25px"
-            px="15px"
+            py="16px"
+            px="24px"
+            h={`100%`}
             // bg='primary'
             bg="transparent"
             color="primary"
+            borderRadius={`0px`}
             border="0.5px solid"
             borderColor="primary"
             _focus={{
               bg: 'transparent',
+              border: '0.5px solid !important',
+              borderColor: 'primary',
+            }}
+            _hover={{
+              bg: 'transparent',
+              border: '0.5px solid !important',
+              borderColor: 'primary ',
             }}
             leftIcon={<BiPhoneCall color={'matador_text.100'} fontSize={`18px`} />}
             onClick={contactModal.onOpen}
             fontWeight="500"
           >
             <HStack>
-              <Text fontSize={`13px`}>Contact Person</Text>
+              <Text fontSize={`16px`}>Contact Person</Text>
             </HStack>
           </Button>
         </Flex>

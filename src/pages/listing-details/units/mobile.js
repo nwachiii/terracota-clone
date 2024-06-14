@@ -45,7 +45,7 @@ const UnitDetailsMobile = () => {
   return (
     <LayoutView display={{base: 'block', lg: 'none'}} noPadding>
       <Box
-        pb={{base: '100px', lg: '50px'}}
+        pb={{base: '20px', lg: '50px'}}
         bg="background"
         h={'100%'}
         minH="100vh"
@@ -110,7 +110,8 @@ const UnitDetailsMobile = () => {
                   // fontSize={'20px'}
                   lineHeight={'140%'}
                   textTransform={'uppercase'}
-                  color="matador_text.200"
+                  color="matador_text.500"
+                  fontWeight={`500`}
                 >
                   STARTING from {formatToCurrency(unitData?.price)}
                 </Text>

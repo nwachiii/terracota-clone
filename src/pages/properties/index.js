@@ -147,8 +147,24 @@ const Properties = () => {
             <>
               {[1, 2, 3, 4, 5, 6].map((item, index) => (
                 <Stack key={index} overflow="hidden" pb="23px" spacing="none" w="full">
-                  <Skeleton w="full" h="350px" />
-                  <HStack mt="20px" px="25px" justify="space-between">
+                  <Skeleton
+                    shadow={'sm'}
+                    // as={motion.div}
+                    maxWidth={'597.45px'}
+                    cursor={'pointer'}
+                    whileTap={{scale: 0.98}}
+                    whileHover={{scale: 1.01}}
+                    // style={{aspectRatio: '38 / 36'}}
+                    aspectRatio={{base: `1 / 1`, lg: '387  / 490'}}
+                    // bg="card_bg"
+                    mx={'auto'}
+                    h={{base: '350px', lg: `490`}}
+                    w="full"
+                    bgSize={'cover'}
+                    borderRadius={'5px'}
+                    position={'relative'}
+                  />
+                  {/* <HStack mt="20px" px="25px" justify="space-between">
                     <Skeleton spacing="4" w="128px" h="20px" />
                     <HStack>
                       <Skeleton w="20px" h="20px" />
@@ -158,7 +174,7 @@ const Properties = () => {
                   <HStack mt="10px" px="25px" spacing="10px" align="end">
                     <Skeleton spacing="4" w="143px" h="45px" />
                     <Skeleton spacing="4" w="78px" h="30px" />
-                  </HStack>
+                  </HStack> */}
                 </Stack>
               ))}
             </>

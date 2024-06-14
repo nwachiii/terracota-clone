@@ -23,7 +23,7 @@ import {scrollBarStyles} from '../common/ScrollBarStyles';
 import UploadImages from './uploadImages';
 import MobileHeader from '../navbar/mobileHeader';
 
-const SuggestIdea = ({suggestModal, onDrawerOpen}) => {
+export const SuggestIdea = ({suggestModal, onDrawerOpen}) => {
   const [message, setMessage] = useState('');
   const toast = useToast();
   const [document, setDocument] = useState([]);
@@ -86,27 +86,17 @@ const SuggestIdea = ({suggestModal, onDrawerOpen}) => {
         right={{base: '0', md: '24px !important'}}
         w="full"
         h={'full'}
-        p="16px"
         maxW={{base: '100vw', md: '500px'}}
         maxH={'515px'}
         bg={{base: '#FFF', md: '#FBFCFC'}}
         boxShadow={{base: 'none', md: 'md'}}
       >
-        <Box pt="20px">
-          <Box p="25px"  borderBottom="1px solid #E4E4E4">
+        <Box>
+          <Box p="25px" borderBottom="1px solid #E4E4E4">
             <Flex direction="row" justify="space-between" align={'center'}>
-              <Stack>
-                <Text
-                  className="gilda-display-regular"
-                  color="text"
-                  fontSize={'24px'}
-                >
-                  Suggest an idea
-                </Text>
-                <Text fontSize={{base: '13px', md: '16px'}} fontWeight={400} color="text">
-                  Do you have any new ideas or desired enhancements for our app.
-                </Text>
-              </Stack>
+              <Text className="gilda-display-regular" color="text" fontSize={'24px'}>
+                Suggest an idea
+              </Text>
               <CloseIcon
                 color="text"
                 cursor="pointer"
@@ -114,6 +104,15 @@ const SuggestIdea = ({suggestModal, onDrawerOpen}) => {
                 onClick={suggestModal?.onClose}
               />
             </Flex>
+            <Text
+              fontSize={{base: '13px', md: '16px'}}
+              fontFamily="Roboto"
+              fontWeight={400}
+              color="text"
+              pt='4px'
+            >
+              Do you have any new ideas or desired enhancements for our app.
+            </Text>
           </Box>
 
           <Box h="full" overflowY={'scroll'} css={scrollBarStyles}>
@@ -154,7 +153,7 @@ const SuggestIdea = ({suggestModal, onDrawerOpen}) => {
                 </Button>
               </Center>
             ) : suggestMutation.isLoading ? (
-              <Center mt="20px" w="full" h="full" flexDirection={'column'}>
+              <Center mt="10px" w="full" h="full" flexDirection={'column'}>
                 <Image alt="success" w="150px" h="150px" src={processingLoader.src} mx="auto" />
                 <Text
                   color="text"
@@ -171,13 +170,7 @@ const SuggestIdea = ({suggestModal, onDrawerOpen}) => {
               </Center>
             ) : (
               <Stack flex={1} p={4} h="full">
-                <Text
-                  fontSize={{base: '12px', md: '14px'}}
-                  fontWeight={500}
-                  color="text"
-                  mb="10px"
-                  mt={{base: '22px', md: '29px'}}
-                >
+                <Text fontSize={{base: '12px', md: '14px'}} fontWeight={500} color="text" mb="10px">
                   Comment
                 </Text>
                 <Textarea
@@ -189,7 +182,7 @@ const SuggestIdea = ({suggestModal, onDrawerOpen}) => {
                   borderRadius={'5px'}
                   w="full"
                   h="105px"
-                  bg='rgba(217, 217, 217, 0.10)'
+                  bg="rgba(217, 217, 217, 0.10)"
                 />
 
                 <Text
@@ -212,7 +205,6 @@ const SuggestIdea = ({suggestModal, onDrawerOpen}) => {
                   border={'0.3px solid #D0D5DD'}
                   w="full"
                   h="80px"
-                  mt={0}
                 />
 
                 <Flex justify={'flex-end'} align={'center'} w="full">
@@ -224,9 +216,10 @@ const SuggestIdea = ({suggestModal, onDrawerOpen}) => {
                     w="full"
                     align="right"
                     color="white"
-                    bg="primary"
+                    bg="#DDB057"
                     mt="30px"
-                    h='50px'
+                    h="50px"
+                    rounded="4px"
                   >
                     Submit
                   </Button>

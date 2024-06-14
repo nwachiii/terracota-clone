@@ -60,7 +60,13 @@ const Space = ({spaceData, dateOrTimeAgo, setRequestInfo, setType}) => {
           ))}
         </>
       ) : (
-        <EmptyState text="No space notification yet" />
+        <EmptyState
+          icon
+          fontFamily="Euclid Circular B"
+          text="Looks like there is nothing on space"
+          textSize={16}
+          headerStyle={{fontSize: 18, fontWeight: 700}}
+        />
       )}
     </>
   );

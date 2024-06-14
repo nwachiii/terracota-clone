@@ -88,17 +88,14 @@ const Unit = () => {
                     </HStack>
 
                     <Text
-                      fontWeight={400}
                       fontSize={'19px'}
                       textTransform={`uppercase`}
                       className="montserrat-regular"
                       lineHeight={'140%'}
-                      color="matador_text.200"
+                      color="matador_text.500"
+                      fontWeight={`500`}
                     >
-                      STARTING FROM{' '}
-                      <Text as="span" fontWeight={400}>
-                        {formatToCurrency(unitData?.price)}
-                      </Text>
+                      STARTING FROM <Text as="span">{formatToCurrency(unitData?.price)}</Text>
                     </Text>
 
                     <Text

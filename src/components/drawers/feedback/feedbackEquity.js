@@ -140,12 +140,12 @@ const FeedbackEquity = ({feedModal, equity, refetch}) => {
         minH="20vh"
         h={'fit-content'}
         p="16px"
-        maxW={'500px'}
+        maxW={'450px'}
         maxH={'530px'}
         bg="#FBFCFC"
         px="0"
       >
-        <Box py="20px">
+        <Box py="10px">
           <Box px={{base: '15px', md: '25px'}}>
             {screen === 'history' ? (
               <Flex direction="row" justify="space-between" align={'center'}>
@@ -169,20 +169,21 @@ const FeedbackEquity = ({feedModal, equity, refetch}) => {
                   cursor="pointer"
                   fontSize="17px"
                   onClick={feedModal?.onClose}
+                  mt='10px !important'
                 />
               </Flex>
             ) : (
               <Flex direction="row" justify="space-between" align={'flex-start'}>
                 <Text
                   color="text"
-                  fontSize={{base: '18px', md: '20px'}}
-                  fontWeight={{base: 500, md: 600}}
-                  className="gilda-display-regular"
+                  fontSize={'24px'}
+                  fontWeight={500}
+                  fontFamily='Gilda Display'
                 >
                   Inspection Feedback
                 </Text>
                 <HStack gap="5px">
-                  {feedbackData?.length && (
+                  {/* {feedbackData?.length && (
                     <Center
                       w="36px"
                       h="36px"
@@ -198,7 +199,7 @@ const FeedbackEquity = ({feedModal, equity, refetch}) => {
                         onClick={() => setScreen('history')}
                       />
                     </Center>
-                  )}
+                  )} */}
                   <CloseIcon
                     color="text"
                     cursor="pointer"
@@ -209,11 +210,6 @@ const FeedbackEquity = ({feedModal, equity, refetch}) => {
               </Flex>
             )}
           </Box>
-
-          <Box my={{base: '30px', md: '21px'}}>
-            <Box display={{base: 'none', md: 'flex'}} w="full" borderBottom="1px solid #EAECF0" />
-          </Box>
-
           {screen === 'history' ? (
             <FeedbackHistory setScreen={setScreen} feedbacks={feedbackData} />
           ) : (
@@ -272,8 +268,8 @@ const FeedbackEquity = ({feedModal, equity, refetch}) => {
                   </Text>
                 </Center>
               ) : (
-                <Box px={{base: '12px', md: '25px'}} mt={{base: '10px', md: '0px'}}>
-                  <Box bg="card_bg" p={{base: '12px', md: '15px'}}>
+                <Box px={{base: '12px', md: '25px'}}>
+                  <Box>
                     <Text
                       color="text"
                       mb="20px"
@@ -287,20 +283,19 @@ const FeedbackEquity = ({feedModal, equity, refetch}) => {
                       <Text
                         color="text"
                         fontSize={{base: '13px', md: '16px'}}
-                        fontWeight={400}
-                        className="gilda-display-regular"
+                        fontWeight={500}
+                        letterSpacing='0.52px'
                       >
-                        How was your tour?
+                        How did your inspection go?
                       </Text>
 
-                      <Flex justify={'space-between'} mt="17px">
+                      <Flex gap='12px' mt="17px">
                         {reactions.map((reaction, index) => (
                           <>
                             {rating === index + 1 ? (
                               <Center
                                 onClick={() => setRating(index + 1)}
                                 cursor={'pointer'}
-                                bg="#3D3D3D"
                                 w="58px"
                                 h="48px"
                                 alignItems={'center'}
@@ -308,10 +303,10 @@ const FeedbackEquity = ({feedModal, equity, refetch}) => {
                                 key={reaction.text}
                                 gap="auto"
                                 flexDirection={'column'}
-                                border={'1px solid #E4E4E4'}
+                                border={'1px solid #DDB057'}
                               >
-                                <Image alt="reaction" w="24px" h="24px" src={reaction.imgSelect} />
-                                <Text fontSize={'10px'} fontWeight={400} color={'#fff'}>
+                                <Image alt="reaction" boxSize={'24px'} src={reaction.imgSelect} />
+                                <Text fontSize={'10px'} fontWeight={400} color={'#DDB057'}>
                                   {reaction.text}
                                 </Text>
                               </Center>
@@ -328,8 +323,9 @@ const FeedbackEquity = ({feedModal, equity, refetch}) => {
                                 gap="auto"
                                 flexDirection={'column'}
                                 border={'1px solid #E4E4E4'}
+                                p='8px'
                               >
-                                <Image alt="reaction" w="24px" h="24px" src={reaction.img} />
+                                <Image alt="reaction" boxSize={'24px'} src={reaction.img} />
                                 <Text fontSize={'10px'} fontWeight={400} color={'#606060'}>
                                   {reaction.text}
                                 </Text>
@@ -341,10 +337,11 @@ const FeedbackEquity = ({feedModal, equity, refetch}) => {
 
                       <Text
                         color="text"
-                        fontSize={{base: '12px', md: '14px'}}
-                        fontWeight={300}
+                        fontSize={{base: '13px', md: '16px'}}
+                        fontWeight={500}
                         mb="10px"
                         mt="29px"
+                        letterSpacing='0.52px'
                       >
                         Tell us more about your experience (Optional)
                       </Text>
@@ -353,11 +350,11 @@ const FeedbackEquity = ({feedModal, equity, refetch}) => {
                         onChange={e => setMessage(e.target.value)}
                         value={message}
                         resize="none"
-                        border="0.5px solid !important"
-                        borderColor={'shade'}
+                        border="1px solid #E4E4E4 !important"
                         borderRadius={'2px'}
                         w="full"
-                        h="90px"
+                        h="134px"
+                        boxShadow='0px 1px 2px 0px rgba(16, 24, 40, 0.05)'
                       />
 
                       <Flex justify={'flex-end'} align={'center'} w="full">

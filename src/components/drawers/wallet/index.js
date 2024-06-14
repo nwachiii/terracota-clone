@@ -11,7 +11,7 @@ import DepositWallet from "./deposit";
 import MobileWalletHeader from "./mobileWHeader";
 import { Footer } from "../../layout/footer";
 
-const Wallet = ({ isWalOpen, onWalClose, avatar, onDrawerOpen }) => {
+export const Wallet = ({ isWalOpen, onWalClose, avatar, onDrawerOpen }) => {
   const [page, setPage] = useState("wallet");
   const [step, setStep] = useState("method");
   const [isNotMobile] = useMediaQuery("(min-width: 768px)");

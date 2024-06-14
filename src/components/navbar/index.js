@@ -1,41 +1,22 @@
-import {
-  Flex,
-  Image,
-  Text,
-  HStack,
-  Menu,
-  useDisclosure,
-  Box,
-  Center,
-  Icon,
-  VStack,
-} from '@chakra-ui/react';
+import {Flex, Image, Text, HStack, useDisclosure, Box, Icon} from '@chakra-ui/react';
 import Link from 'next/link';
-import {themeStyles} from '../../theme';
 import logoWhite from '../../images/logo-white.svg';
 import logo from '../../images/logo.svg';
-import Notification from '../drawers/Notification';
-import Wallet from '../drawers/wallet';
+import {Notification} from '../drawers/Notification';
+import {Wallet} from '../drawers/wallet';
 import ProfileMenu from './ProfileMenu';
-import {Button} from '../../ui-lib/ui-lib.components';
-import Register from '../auth/register';
-import notificationWhite from '../../images/navbar/notification-white.svg';
-import notification from '../../images/navbar/notification.svg';
 import {useRouter} from 'next/router';
-import logoMobile from '../../images/mobile-logo.png';
 import MobileDrawer from './MobileDrawer';
-import Feedback from '../drawers/feedback/feedback';
-import ReportBug from '../drawers/ReportBug';
-import SuggestIdea from '../drawers/SuggestIdea';
+import {Feedback} from '../drawers/feedback/feedback';
+import {ReportBug} from '../drawers/ReportBug';
+import {SuggestIdea} from '../drawers/SuggestIdea';
 import MyAssets from '../drawers/MyAssets';
 import Watchlist from '../drawers/Watchlist';
 import {getSettingsData} from '../../api/Settings';
 import {useQuery} from 'react-query';
-import menuBurger from '../../images/navbar/menuBurger.svg';
-import backIcon from '../../images/navar/backIcon.svg';
 import {fetchAgentTerms} from '../../api/agents';
-import {appCurrentTheme, getItemFromLS} from '../../utils/localStorage';
-import {DARK_BLUE, LIGHT, LOGGED_IN_USER} from '../../constants/names';
+import {appCurrentTheme} from '../../utils/localStorage';
+import {LIGHT} from '../../constants/names';
 import {colors_object} from '../../theme/colors';
 import {ChevronLeftIcon} from '@chakra-ui/icons';
 import {BiMenu} from 'react-icons/bi';
@@ -209,7 +190,9 @@ const Navbar = ({transluscent, isLandingPage, navBarStyle, activePage}) => {
           pt="10px"
         >
           <Flex align={'center'} gap="20px">
-            {isLandingPage || router.pathname === '/properties' || router.pathname === '/settings' ? (
+            {isLandingPage ||
+            router.pathname === '/properties' ||
+            router.pathname === '/settings' ? (
               <Link href={LoggedinUser ? '/properties' : '/'}>
                 <Image
                   cursor={'pointer'}

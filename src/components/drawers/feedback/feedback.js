@@ -53,7 +53,7 @@ const reactions = [
   },
 ];
 
-const Feedback = ({ feedModal }) => {
+export const Feedback = ({ feedModal }) => {
   const [message, setMessage] = useState('');
   const [rating, setRating] = useState(0)
   const [screen, setScreen] = useState('')

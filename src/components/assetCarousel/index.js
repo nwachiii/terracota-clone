@@ -33,14 +33,14 @@ const AssetCarousel = ({slideImages, ...rest}) => {
 
   return (
     <>
-      <Box w="full" h="600px" {...rest}>
+      <Box w="full" h="516px" {...rest}>
         {slideImages?.map((slideImage, i) => (
           <Box
             key={i}
             display={`${slide === i + 1 ? 'block' : 'none'}`}
             alt="next_image"
             w="full"
-            h="600px"
+            h="516px"
             onClick={() => handleImageExpansion()}
           >
             <Image

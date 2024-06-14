@@ -57,7 +57,7 @@ const ListingDetails = () => {
                       <Text
                         className="gilda-display-regular"
                         fontWeight={400}
-                        fontSize={'48px'}
+                        fontSize={'80px'}
                         lineHeight={'72px'}
                         textTransform={'uppercase'}
                       >
@@ -78,18 +78,21 @@ const ListingDetails = () => {
                       </HStack>
                     </HStack>
 
-                    <Text fontWeight={300} fontSize={'19px'} textTransform={`uppercase`}>
-                      STARTING FROM{' '}
-                      <Text as="span" fontWeight={400}>
-                        {formatToCurrency(info?.starting_from)}
-                      </Text>
+                    <Text
+                      fontSize={'19px'}
+                      textTransform={`uppercase`}
+                      color="matador_text.500"
+                      fontWeight={`500`}
+                    >
+                      STARTING FROM <Text as="span">{formatToCurrency(info?.starting_from)}</Text>
                     </Text>
                     <Text
                       lineHeight={'140%'}
                       className="montserrat-regular"
-                      color="matador_text.300"
+                      color="matador_text.500"
                       fontSize={'19px'}
                       fontWeight={400}
+                      letterSpacing={`.2px`}
                     >
                       {info?.description}
                     </Text>
@@ -119,7 +122,7 @@ const ListingDetails = () => {
                       lat={info?.latitude}
                       lng={info?.longitude}
                       width="full"
-                      height="529px"
+                      height="391px"
                     />
                   </Box>
                 </Box>

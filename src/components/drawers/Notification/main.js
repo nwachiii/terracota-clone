@@ -48,7 +48,7 @@ const Main = ({ onNotClose, onDrawerOpen, setRequestInfo, setType, isSpace, setI
 
   return (
     <Box w='full' h='70vh' >
-      <DrawerCloseButton />
+      <DrawerCloseButton display={{ base: 'none', md: 'flex' }} />
       <Flex direction={'row'} w='full' borderBottom={'1px solid #F2F4F7'} mb='20px' mt='50px' justify={'space-around'}>
         <Text
           pb='8px' fontWeight={500} w='110px' textAlign={'center'}
@@ -66,9 +66,9 @@ const Main = ({ onNotClose, onDrawerOpen, setRequestInfo, setType, isSpace, setI
         >Space</Text>
       </Flex>
 
-      <MobileHeader onDrawerClose={onNotClose} activePage={'Notification'} onDrawerOpen={onDrawerOpen} />
+      {/* <MobileHeader onDrawerClose={onNotClose} activePage={'Notification'} onDrawerOpen={onDrawerOpen} /> */}
 
-      <Flex
+      {/* <Flex
         display={{ base: 'flex', md: 'none' }}
         cursor={'pointer'} mt='-20px' mb='20px'
         borderRadius={'16px'} shadow={'sm'}
@@ -80,7 +80,7 @@ const Main = ({ onNotClose, onDrawerOpen, setRequestInfo, setType, isSpace, setI
           {isSpace ? 'Go to my Notification' : 'Go to my spaceeeee'}
         </Text>
         <FaArrowRight size={14} color='text' style={{ marginLeft: 4 }} />
-      </Flex>
+      </Flex> */}
 
       <VStack spacing={'15px'} stretch h='5vh'>
         {isSpace ? (

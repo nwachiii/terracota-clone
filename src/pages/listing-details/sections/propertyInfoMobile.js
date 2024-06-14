@@ -44,13 +44,13 @@ const PropertyInfoMobile = ({info}) => {
                 bg: 'primary',
               }}
               leftIcon={<Image src={fractionalImg.src} fontSize="20" />}
-              onClick={(fractionalModal.onOpen)}
+              onClick={fractionalModal?.onOpen}
               fontWeight="500"
               w={`100%`}
               h="100%"
             >
               <HStack>
-                <Text fontSize={`13px`}>Own a Fraction</Text>
+                <Text fontSize={`13px`}>Buy Fraction</Text>
               </HStack>
             </Button>
             <HStack gap="8px" flex={`1`} w={`100%`}>

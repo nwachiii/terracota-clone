@@ -267,6 +267,7 @@ const DepositWallet = ({step, setStep, setPage, onWalClose}) => {
                 fontSize: 28,
                 color: '#606060',
               }}
+              rounded='8px'
             />
           </Stack>
           <Stack justify="space-between" px={8} gap="12px">
@@ -383,6 +384,7 @@ const DepositWallet = ({step, setStep, setPage, onWalClose}) => {
               _disabled={{
                 color: '#191919',
               }}
+              rounded='8px'
             />
           </Stack>
           <Text pt={4} my={{base: '12px', md: '16px'}}>

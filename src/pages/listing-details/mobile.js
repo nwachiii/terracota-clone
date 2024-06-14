@@ -38,7 +38,7 @@ const ListingDetailsMobile = () => {
   return (
     <LayoutView display={{base: 'block', lg: 'none'}} noPadding>
       <Box
-        pb={{base: '100px', lg: '50px'}}
+        pb={{base: '20px', lg: '50px'}}
         bg="background"
         h={'100%'}
         minH="100vh"
@@ -154,7 +154,7 @@ const ListingDetailsMobile = () => {
                 <Box my="20px">
                   <Text
                     fontSize={{base: '16px', lg: '24px'}}
-                    fontWeight={600}
+                    fontWeight={400}
                     color="matador_text.100"
                     className="gilda-display-bold"
                   >

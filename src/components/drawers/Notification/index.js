@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {DrawerCloseButton} from '@chakra-ui/react';
+import {DrawerCloseButton, useMediaQuery} from '@chakra-ui/react';
 import {Drawer, DrawerOverlay, DrawerContent} from '@chakra-ui/react';
 import Main from './main';
 import {useMutation, useQuery} from 'react-query';
@@ -27,12 +27,12 @@ const customScrollbarStyles = {
   },
 };
 
-const Notification = ({isNotOpen, onNotClose, onDrawerOpen}) => {
+export const Notification = ({isNotOpen, onNotClose, onDrawerOpen}) => {
   const [type, setType] = useState('notification');
   const [requestInfo, setRequestInfo] = useState(null);
   const [isSpace, setIsSpace] = useState(false);
   const asset = requestInfo?.coownership_request?.equity;
-
+  const [isNotMobile] = useMediaQuery('(min-width: 768px)');
   const {data, isLoading: coOwnerLoading} = useQuery(
     ['coowners', asset?.id],
     () => fetchListOfCoowners(asset?.id),
@@ -90,17 +90,18 @@ const Notification = ({isNotOpen, onNotClose, onDrawerOpen}) => {
       blockScrollOnMount={true}
       placement="right"
     >
-      <DrawerOverlay />
+      {isNotMobile && <DrawerOverlay />}
       <DrawerContent
         maxW={{base: 'full', md: '400px'}}
-        bg="card_bg"
-        top="32px !important"
-        right={{base: 'unset', md: '24px !important'}}
+        bg={{base: '#FFF', md: '#FBFCFC'}}
+        top={{base: 'unset !important', md: '32px !important'}}
+        bottom={{base: '0', md: 'unset'}}
+        right={{base: '0', md: '24px !important'}}
         w="full"
-        h={'fit-content'}
-        maxH={'720px'}
-        minH={'50vh'}
+        h={'full'}
+        maxH={{base: '92vh', md: '720px'}}
         overflowY={'scroll'}
+        boxShadow={{base: 'none', md: 'lg'}}
       >
         {type === 'notification' ? (
           <Main
